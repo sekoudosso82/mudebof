@@ -66,17 +66,45 @@ export class Register  implements OnInit{
     ) {
       this.memberForm = this.fb.group({
       memberId:0,
-      nom: ['', Validators.required],
-      prenoms: ['', Validators.required],
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
+      nom: ['', [
+        Validators.required, 
+        Validators.minLength(2), 
+        Validators.maxLength(10),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/)
+      ]],
+      prenoms: ['', [
+        Validators.required, 
+        Validators.minLength(2), 
+        Validators.maxLength(40)
+      ]],
+      userName: ['', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(20),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/)
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(20),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/)
+      ]],
       role:'Membre',
-      location:[''],
-      phone:[, Validators.required],       // phone: ['', Validators.required],
-      // email:'', //      
-       email: ['', [Validators.email]],
+      location:['', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(40),
+      ]],
+      phone:[, [ 
+        Validators.required, 
+        Validators.pattern(/^[0-9]{10}$/)
+      ]],
+      email: ['', [
+        Validators.email, 
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+      ]], 
       photo: [null], //photo: '',
-      status:[''],
+      // status:[''],
       dateJoined:new Date(),
       isActive:true,
     });

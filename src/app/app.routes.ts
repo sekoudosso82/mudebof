@@ -9,6 +9,8 @@ import { Detailmember } from './members/detailmember/detailmember';
 import { Updatemember } from './members/updatemember/updatemember';
 import { Deletemember } from './members/deletemember/deletemember';
 import { Addmember } from './members/addmember/addmember';
+import { Reglements } from './reglements/reglements/reglements';
+import { Projects } from './projects/projects/projects';
 
 export const routes: Routes = [
     {path: '', redirectTo: '**', pathMatch: 'full'},
@@ -17,6 +19,10 @@ export const routes: Routes = [
     {path: 'detailmember/:id', component: Detailmember, canActivate:[authGuardGuard]},
     {path: 'updatemember/:id', component: Updatemember, canActivate:[authGuardGuard]},
     {path: 'deletemember/:id', component: Deletemember, canActivate:[authGuardGuard]},
+
+    {path: 'reglements', component: Reglements, canActivate:[authGuardGuard]},
+
+     {path: 'projects', component: Projects, canActivate:[authGuardGuard]},
 
     {path: 'login', component: Login},
     {path: 'logout', component: Logout},

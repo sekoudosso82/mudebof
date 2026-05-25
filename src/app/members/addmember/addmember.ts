@@ -58,7 +58,12 @@ export class Addmember implements OnInit{
     ) {
       this.memberForm = this.fb.group({
       memberId:0,
-      nom: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
+      nom: ['', [
+        Validators.required, 
+        Validators.minLength(2), 
+        Validators.maxLength(10),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/)
+      ]],
       prenoms: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
       userName: ['', [
         Validators.required,

@@ -19,26 +19,56 @@ export class Updatemember implements OnInit {
   selectedFile!: File;
   imagePreview: string | ArrayBuffer | null = null;
 
-  constructor( 
+  constructor(
     private memberservice:Membersservice,
     private fb: FormBuilder,
     private router:Router,
-   )
+  )
   {  
     this.member = this.memberservice.member; 
     this.memberForm = this.fb.group({
       memberId:this.member()?.memberId,
-      nom: [this.member()?.nom, Validators.required],
-      prenoms: [this.member()?.prenoms, Validators.required],
-      userName: [this.member()?.userName, Validators.required],
-      password: [this.member()?.password, Validators.required],
+      nom: [this.member()?.nom, [
+        Validators.required, 
+        Validators.minLength(2), 
+        Validators.maxLength(10),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/)
+      ]],
+      prenoms: [this.member()?.prenoms,  [
+        Validators.required, 
+        Validators.minLength(2), 
+        Validators.maxLength(40)
+      ]],
+      userName: [this.member()?.userName, [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(20),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/)
+      ]],
+      password: [this.member()?.password, [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(20),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/)
+      ]],
       role:'Membre',
-      location:[this.member()?.location],
-      phone:[this.member()?.phone, Validators.required],       // phone: [this.member()?., Validators.required],
-      email:this.member()?.email, //       email: [this.member()?., [Validators.required, Validators.email]],
-      photo: [null], //photo: this.member()?.,
+      location:[this.member()?.location, [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(40),
+      ]],
+      phone:[this.member()?.phone, [ 
+        Validators.required, 
+        Validators.pattern(/^[0-9]{10}$/)
+      ]],
+      // email:this.member()?.email, 
+      email: [this.member()?.email, [
+        Validators.email, 
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+      ]], 
+      // photo: [null], //photo: this.member()?.,
       status:[this.member()?.status],
-      dateJoint:new Date(),
+      // dateJoint:new Date(),
       isActive:this.member()?.status,
     });
   }
@@ -78,7 +108,7 @@ export class Updatemember implements OnInit {
       formData.append('location', this.memberForm.value.location);
       formData.append('phone', this.memberForm.value.phone);
       formData.append('email', this.memberForm.value.email);
-      if (this.selectedFile) { formData.append('photo', this.selectedFile);}
+      // if (this.selectedFile) { formData.append('photo', this.selectedFile);}
         this.SaveUpdatedMember(formData);
         // alert('Member updated Successfully!');
       }

@@ -80,6 +80,17 @@ button{
     // padding: 4px;
     // border: 2px solid red;  
 }
+a{
+  padding: 10px 20px;
+  border: none;
+  // background-color: gray;
+  transition: 0.3s;
+}
+
+a:hover {
+  background-color: green;
+  color: white;
+}
 // .class1Button{
 //     background-color: greenyellow;
 //     display: flex;
