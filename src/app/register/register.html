@@ -1,0 +1,58 @@
+
+
+<div class="container">
+  <form [formGroup]="memberForm" (ngSubmit)="AddNewMember()" class="card">
+
+    <!-- <button routerLink="/home">Annuler</button> -->
+
+    <h2>Entrez vos informations</h2>
+
+    <div class="form-group">
+      <!-- <label>Nom</label> -->
+      <input type="text" formControlName="nom" placeholder="Entrez votre nom">
+    </div>
+
+    <div class="form-group">
+      <!-- <label>Prenoms</label> -->
+      <input type="text" formControlName="prenoms" placeholder="Entrez votre prenom(s)">
+    </div>
+
+    <div class="form-group">
+      <!-- <label>Nom d'utilisateur</label> -->
+      <input type="text" formControlName="userName" placeholder="Entrez votre nom d'utilisateur">
+    </div>
+
+    <div class="form-group">
+      <!-- <label>Mot de pass</label> -->
+      <input type="text" formControlName="password" placeholder="Creez votre mot de pass">
+    </div>
+
+    <div class="form-group">
+      <!-- <label>Ville</label> -->
+      <input type="text" formControlName="location" placeholder="Ville de residence">
+    </div>
+
+    <div class="form-group">
+      <!-- <label>Telephone</label> -->
+      <input type="number" formControlName="phone" placeholder="numero Telephone">
+    </div>
+
+    <div class="form-group">
+      <!-- <label>Email</label> -->
+      <input type="email" formControlName="email" placeholder="Votre email">
+    </div>
+
+    <div class="form-group">
+      <!-- <label>Photo</label> -->
+      <input type="file" (change)="onFileChange($event)">
+    </div>
+    <div class="preview" >
+        @if (imagePreview) { <img [src]="imagePreview" alt="Preview"> }
+    </div>
+
+    <button id="validerButton" type="submit" [disabled]="memberForm.invalid">Valider</button>
+    <!-- <button id="annulerButton" routerLink="/members">Annuler</button> -->
+    <button id="cancelButton" routerLink="/home">Annuler</button>
+
+  </form>
+</div>

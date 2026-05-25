@@ -1,0 +1,15 @@
+
+<div class="container">
+  <form class="login-form" (ngSubmit)="Login()">
+
+    <h2>Login</h2>
+
+    <input  type="text"  [(ngModel)]="currentLogged.userName"  placeholder="Nom utilisateur"  name="userName"  required />
+
+    <input  type="password"  [(ngModel)]="currentLogged.password"  placeholder="Mot de Pass" name="password"  required />
+
+    <button class="loginButton" type="submit">Sign In</button>
+    <button id="cancelButton" routerLink="/home">Annuler</button>
+
+  </form>
+</div>

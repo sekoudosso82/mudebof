@@ -1,0 +1,28 @@
+<!-- <button routerLink="/members">Member detail</button> -->
+<!-- <div class="class2"> -->
+    <!-- <p class="class1">Plus d'information</p> -->
+    @if (member()) {
+
+
+        <!-- <div class="img-wrapper"> <img [src]="member.photo" alt="{{ member.nom }}" /> </div> -->
+        <!-- <div class="info"> -->
+            <p>memId: {{ member()?.nom}}</p>
+            <p>Nom: {{ member()?.nom }}</p>
+            <p>Prenom(s): {{ member()?.prenoms }}</p>
+            <p class="role">Nom utilisateur: {{member()?.userName}}</p>
+            <p class="role">Mot de pass: {{member()?.password}}</p>
+            <p class="role">Role: {{member()?.role}}</p>
+            <p class="role">Ville ou Location: {{member()?.location}}</p>
+            <p class="role">Telephone: {{member()?.phone}}</p>
+            <p class="email">email: {{member()?.email}}</p>
+            <p class="role">date enregistrement: {{member()?.dateJoined| date:'mediumDate'}}</p>
+            <p class="role">Role: {{member()?.role}}</p>
+            <p class="role">Actif: {{member()?.isActive}}</p>
+            <button [routerLink]="['/updatemember', member()?.memberId]">Update</button>
+            <button [routerLink]="['/deletemember', member()?.memberId]">Supprimer</button>
+            <!-- <button class="deleteButton" (click)="DeleteMember(member()?.memberId)"> Delete </button> -->
+            <button routerLink="/members">Retour</button>
+
+        <!-- </div> -->
+    }
+<!-- </div> -->

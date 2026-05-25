@@ -1,0 +1,66 @@
+/* navbar  */
+/* app.component.css */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 1.5rem;
+  background-color: #1976d2;
+  color: #fff;
+  z-index: 1000;
+}
+
+/* Simple styling */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links a.active {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Content area below fixed navbar */
+.content {
+  padding: 1.5rem;
+  margin-top: 60px; /* same as navbar height */
+}
+/* navbar end */
+
+.myNavBar{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    background-color: lightblue;
+    padding: 1%;
+    z-index: 1000;
+    margin-bottom: 2%;
+}
+
+button{
+    background-color: bisque;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1rem;
+}

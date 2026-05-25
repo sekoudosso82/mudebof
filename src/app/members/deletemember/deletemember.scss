@@ -1,0 +1,66 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.login-form {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.login-form input:focus {
+  border-color: #4f46e5;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background:red;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px;
+
+}
+
+button:hover {
+  background: orange;
+}
+
+#loginButton{
+  background-color: red;
+  margin: 5px;
+}
+#registerButton{
+  background-color: blue;
+  margin: 5px;
+}
+
+#deletButton{
+  background-color: red;
+  margin: 5px;
+}
+#cancelButton{
+  background-color: blue;
+  margin: 5px;
+}

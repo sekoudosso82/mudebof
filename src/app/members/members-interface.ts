@@ -1,0 +1,15 @@
+export interface MembersInterface {
+    memberId:number,
+    nom:string,
+    prenoms:string,
+    userName:string,
+    password:string,
+    role:string,
+    location:string,
+    phone:number,
+    email:string,
+    status:string,
+    photo:string,
+    dateJoined:Date,
+    isActive:boolean,
+}

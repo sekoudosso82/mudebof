@@ -1,0 +1,81 @@
+
+<nav class="navbar">
+  <!-- <div> -->
+    <!-- <p>Bienvenue sur la page officielle de la Mutuelle de Developpement de Borotou</p> -->
+    <!-- <div class="logo">Mudebo</div> -->
+    <ul class="nav-links">
+      <li><a routerLink="/projects" routerLinkActive="active">Projets</a></li>
+      <li><a routerLink="/members" routerLinkActive="active">Membres</a></li>
+      <li><a routerLink="/status" routerLinkActive="active">Status</a></li>
+      <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+      <li><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
+    </ul> 
+  <!-- </div> -->
+</nav>
+
+<div class="class1">
+    <button (click)="SortbyNomFunc()">Nom A-Z</button>
+    <button (click)="SortbyPrenomFunc()">Prenoms A-Z</button>
+    <button (click)="SortbyRoleFunc()">Role A-Z</button>
+    <button (click)="SortbyLocationFunc()">Ville A-Z</button>
+    <button (click)="SortbyStatusFunc()">Status A-Z</button>
+    <button [routerLink]="['/addmember']">Ajouter un membre</button>
+</div>
+<div class="container mt-4">
+    <!-- <hr> -->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="t1">Nom </th>
+            <th class="t1">Prenoms</th>
+            <th class="t1">Phone</th>
+            <th class="t1">Location</th>
+            <th class="t1">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <!-- <tr >  -->
+                @if (members()) {
+                    @for (item of members(); track item.memberId){
+                            <tr>
+                                <td class="t1">{{ item.nom }}</td>
+                                <td class="t1">{{ item.prenoms }}</td>
+                                <td class="t1">{{ item.phone }}</td>
+                                <td class="t1">{{ item.location }}</td>
+                                <td class="t1">
+                                    <button class="detailButton" [routerLink]="['/detailmember', item.memberId]">Detail</button>
+                                    <!-- <button class="updateButton" [routerLink]="['/updatemember', item.memberId]">Update</button> -->
+                                    <!-- <button class="deleteButton" (click)="DeleteMember(item.memberId)"> Delete </button> -->
+                                </td>
+    
+                            </tr>
+                    }
+                }
+            <!-- </tr>  -->
+        </tbody>
+  </table>
+</div>
+
+
+<!-- @if (membersss.length>0) {  -->
+    <!-- <div class="class2">
+        <ul>
+                @for (item of membersss(); track item.memberId) {
+                <div class="class3">
+                    <!-- <div class="img-wrapper"> <img [src]="item.photo" alt="{{ item.nom }}" /> </div> -->
+                    <!-- <div class="info"> -->
+                        <!-- <h3>{{ item.nom }}: {{item.prenoms}}</h3> -->
+                        <!-- <p class="role">Nom utilisateur: {{item.userName}}</p> -->
+                        <!-- <p class="role">Mot de pass: {{item.password}}</p> -->
+                        <!-- <p class="role">Role: {{item.role}}</p> -->
+                        <!-- <p class="role">Ville ou Location: {{item.location}}</p> -->
+                        <!-- <p class="role">Telephone: {{item.phone}}</p> -->
+                        <!-- <p class="email">email: {{item.email}}</p> -->
+                        <!-- <button [routerLink]="['/detailmember', item.memberId]">Detail</button> -->
+                    <!-- </div> -->
+                <!-- </div>             -->
+    
+            <!-- }    -->
+        <!-- </ul> -->
+    <!-- </div> --> 

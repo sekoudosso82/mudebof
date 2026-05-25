@@ -1,0 +1,15 @@
+export interface RegisterInterface {
+    memberId:number,
+    nom:string,
+    prenoms:string,
+    userName:string,
+    password:string,
+    role:string,
+    location:string,
+    phone:number,
+    email:string,
+    status:string,
+    photo:FormData,
+    dateJoint:Date,
+    isActive:boolean,
+}
