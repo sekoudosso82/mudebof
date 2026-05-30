@@ -111,7 +111,10 @@ export class Updatemember implements OnInit {
       // if (this.selectedFile) { formData.append('photo', this.selectedFile);}
         this.SaveUpdatedMember(formData);
         // alert('Member updated Successfully!');
-      }
+    }
+    else{
+      console.log('memberForm not valid');
+    }
   }
 
   SaveUpdatedMember(formData: FormData):void{

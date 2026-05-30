@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-projects',
+  selector: 'app-activities',
+  // imports: [],
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './projects.html',
-  styleUrl: './projects.scss',
+  templateUrl: './activities.html',
+  styleUrl: './activities.scss',
 })
-export class Projects {}
+export class Activities {}

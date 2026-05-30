@@ -1,0 +1,19 @@
+<nav class="navbar">
+    <ul class="nav-links">
+      <li><a routerLink="/members" routerLinkActive="active">MEMBRES</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active">PROJETS</a></li>
+      <li><a routerLink="/reglements" routerLinkActive="active">REGLEMENT INTERIEURE</a></li>
+    </ul> 
+    <ul class="nav-links">
+        <li><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
+    </ul> 
+</nav>
+
+<div class="class1">
+    <!-- <button (click)="SortbyNomFunc()">Nom A-Z</button>
+    <button (click)="SortbyPrenomFunc()">Prenoms A-Z</button>
+    <button (click)="SortbyRoleFunc()">Role A-Z</button>
+    <button (click)="SortbyLocationFunc()">Ville A-Z</button>
+    <button (click)="SortbyStatusFunc()">Status A-Z</button> -->
+    <button [routerLink]="['/addactivity']">Ajouter avtivite</button>
+</div>

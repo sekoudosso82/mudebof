@@ -1,0 +1,66 @@
+<div class="container">
+  <form (ngSubmit)="SaveActivity()" class="card">
+    <h2>Entrez les informations</h2>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="activity.activityTitle" name="activityTitle" placeholder="Titre de l'activite">
+       
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="activity.activityDescription" name="activityDescription" placeholder="Entrez activityDescription">
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="activity.activityStatus" name="activityStatus" placeholder="Entrez status">
+    </div>
+
+    <input type="file" (change)="onFileSelected($event)" accept="image/*">
+
+    @if(imagePreview) { <img [src]="imagePreview" width="150" height="150"> }
+
+    
+    <button id="validerButton" type="submit" >Valider</button>
+    <button id="cancelButton" routerLink="/activities">Annuler</button>
+
+  </form>
+</div>
+
+
+
+<!-- <div class="container">
+  <form [formGroup]="activityForm" (ngSubmit)="AddNewActivity()" class="card">
+    <h2>Entrez les informations</h2>
+    <div class="form-group">
+      <input type="text" formControlName="activityTitle" placeholder="Titre de l'activite">
+        @if(activityForm.get('activityTitle')?.errors?.['required']) 
+          {<small>Obligatoire</small>}
+        @if(activityForm.get('activityTitle')?.errors?.['minlength']) 
+          {<small>Invalid, au moins 2 characteres </small>}
+        @if(activityForm.get('activityTitle')?.errors?.['maxlength']) 
+          {<small>Invalid, au plus 50 characteres </small>}
+        @if(activityForm.get('activityTitle')?.errors?.['pattern']) 
+          { <small>ne comporte pas d'espace </small> }
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="activityDescription" placeholder="Entrez activityDescription">
+        @if(activityForm.get('activityDescription')?.errors?.['required']) 
+          {<small>Obligatoire</small>}
+        @if(activityForm.get('activityDescription')?.errors?.['minlength']) 
+          {<small>Invalid, au moins 2 characteres </small>}
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="activityStatus" placeholder="Entrez status">
+        @if(activityForm.get('activityStatus')?.errors?.['required']) 
+          {<small>Obligatoire</small>}
+        @if(activityForm.get('activityStatus')?.errors?.['minlength']) 
+          {<small>Invalid, au moins 2 characteres </small>}
+    </div>
+
+    <input type="file" (change)="onFileSelected($event)" accept="image/*">
+
+    @if(imagePreview) { <img [src]="imagePreview" width="150" height="150"> }
+
+    
+    <button id="validerButton" type="submit" [disabled]="activityForm.invalid">Valider</button>
+    <button id="cancelButton" routerLink="/activities">Annuler</button>
+
+  </form>
+</div> -->

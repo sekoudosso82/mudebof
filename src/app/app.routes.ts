@@ -11,6 +11,8 @@ import { Deletemember } from './members/deletemember/deletemember';
 import { Addmember } from './members/addmember/addmember';
 import { Reglements } from './reglements/reglements/reglements';
 import { Projects } from './projects/projects/projects';
+import { Activities } from './activities/activities/activities';
+import { Addactivity } from './activities/addactivity/addactivity';
 
 export const routes: Routes = [
     {path: '', redirectTo: '**', pathMatch: 'full'},
@@ -22,7 +24,11 @@ export const routes: Routes = [
 
     {path: 'reglements', component: Reglements, canActivate:[authGuardGuard]},
 
-     {path: 'projects', component: Projects, canActivate:[authGuardGuard]},
+    {path: 'projects', component: Projects, canActivate:[authGuardGuard]},
+
+    {path: 'activities', component: Activities, canActivate:[authGuardGuard]},
+    {path: 'addactivity', component: Addactivity, canActivate:[authGuardGuard]},
+
 
     {path: 'login', component: Login},
     {path: 'logout', component: Logout},
