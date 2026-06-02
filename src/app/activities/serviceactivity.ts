@@ -28,7 +28,6 @@ export class Serviceactivity {
   CreateActivityWithPhoto(formData:FormData): Observable<any>{
     console.log("CreateActivityWithPhoto")
     formData.forEach((value, key) => { console.log(`${key}:`, value)});
-
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post('http://localhost:5243/api/Activities/CreateNewActivity', formData)
@@ -47,9 +46,15 @@ export class Serviceactivity {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     // return this.http.get<any>(`http://localhost:5243/api/Activities/${actId}`, {headers})
     return this.http.get<any>(`http://localhost:5243/api/Activities/${actId}?activityId=${actId}`, {headers})
-
                               //  http://localhost:5243/api/Activities/2
 
+  }
+
+  DeleteActivities(actId:Number): Observable<any>{
+    console.log(`actId to be  deleted from activityService ${actId}`);
+    const token = this.auth.GetToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<Interfaceactivity>(`http://localhost:5243/api/Activities/${actId}?activityId=${actId}`, {headers})
   }
 
   // signal state
