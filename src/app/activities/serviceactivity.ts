@@ -57,6 +57,16 @@ export class Serviceactivity {
     return this.http.delete<Interfaceactivity>(`http://localhost:5243/api/Activities/${actId}?activityId=${actId}`, {headers})
   }
 
+    UpdateActivity(formData:FormData): Observable<any>{
+      console.log('we are in UpdateActivity func in service');
+        // console.log(`new activity tittle is: ${formData.get('activityTitle')}`);
+            console.log("updateActivityWithPhoto")
+    formData.forEach((value, key) => { console.log(`${key}:`, value)});
+      const token = this.auth.GetToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      return this.http.put<Interfaceactivity>('http://localhost:5243/api/Activities/'+Number(formData.get('activityId')),formData, {headers})
+    }
+
   // signal state
   activity = signal<Interfaceactivity | null>(null);
 
