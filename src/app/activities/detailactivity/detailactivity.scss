@@ -1,0 +1,70 @@
+
+button{
+    background-color: aqua;
+    text-align: center;
+    // display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+    margin: 0 auto;
+    padding: 5px;
+    border: 2px solid red;  
+    color: white;
+    border: none;
+    // padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1rem;
+    // margin: auto;
+}
+
+button:hover{
+    opacity: 0.9;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+#updateButon{
+    background-color: green;
+}
+#deleteButon{
+    background-color: red;
+}
+#returnButon{
+    background-color: blue;
+}
+.container {
+//   display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+//   height: 100vh;
+}
+
+.center-box {
+  width: 200px;
+  height: 100px;
+  background: lightblue;
+}
+
+.member-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  flex: 1;
+  width: 50%;
+
+
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.member-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+

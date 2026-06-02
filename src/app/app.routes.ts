@@ -13,6 +13,7 @@ import { Reglements } from './reglements/reglements/reglements';
 import { Projects } from './projects/projects/projects';
 import { Activities } from './activities/activities/activities';
 import { Addactivity } from './activities/addactivity/addactivity';
+import { Detailactivity } from './activities/detailactivity/detailactivity';
 
 export const routes: Routes = [
     {path: '', redirectTo: '**', pathMatch: 'full'},
@@ -28,6 +29,10 @@ export const routes: Routes = [
 
     {path: 'activities', component: Activities, canActivate:[authGuardGuard]},
     {path: 'addactivity', component: Addactivity, canActivate:[authGuardGuard]},
+    {path: 'detailactivity/:id', component: Detailactivity, canActivate:[authGuardGuard]},
+    {path: 'updatectivity/:id', component: Detailactivity, canActivate:[authGuardGuard]},
+    {path: 'deleteactivity/:id', component: Detailactivity, canActivate:[authGuardGuard]},
+    
 
 
     {path: 'login', component: Login},

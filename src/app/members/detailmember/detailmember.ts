@@ -15,8 +15,7 @@ export class Detailmember implements OnInit {
   // var 
   route: ActivatedRoute = inject(ActivatedRoute);
   member = signal<MembersInterface | null>(null);   // signal state
-  // access signal directly
-  // member = this.memberService.member;
+
 
   constructor(
     private memberservice:Membersservice,

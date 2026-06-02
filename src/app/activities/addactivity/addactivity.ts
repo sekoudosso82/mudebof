@@ -19,6 +19,7 @@ export class Addactivity implements OnInit{
     // activityDate:'',
     activityDate: new Date(),
     activityStatus:'',
+    activityPhotoUrl:'',
   }
   // var 
   selectedFile!: File;

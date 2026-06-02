@@ -21,11 +21,7 @@ export class MembersList implements OnInit{
   
   // memberArr? : MembersInterface[];
   members = signal<MembersInterface[]>([]);
-  ///
-  // members: any[] = [];
-  membersss = signal<MembersInterface[]>([]); 
-  viewReady = false;
-  ///
+ 
   un=localStorage.getItem('un');
   pw=localStorage.getItem('p');
 

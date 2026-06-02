@@ -91,6 +91,35 @@ a:hover {
   background-color: green;
   color: white;
 }
+
+.member-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.member-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  flex: 1;
+
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.container {
+  display: flex;
+  // flex-wrap: wrap;
+  gap: 16px;
+}
+
 // .class1Button{
 //     background-color: greenyellow;
 //     display: flex;

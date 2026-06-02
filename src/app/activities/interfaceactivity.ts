@@ -5,4 +5,6 @@ export interface Interfaceactivity {
     // activityDate:string,
     activityDate: Date,
     activityStatus:string,
+    activityPhotoUrl:string;
+
 }
