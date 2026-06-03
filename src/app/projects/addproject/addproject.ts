@@ -11,14 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './addproject.scss',
 })
 export class Addproject implements OnInit{
-  // project:any ={
-  //   projectId:0,
-  //   projectTitle:'',
-  //   projectDescription:'',
-  //   projectDate: new Date(),
-  //   projectStatus:'',
-  //   projectPhotoUrl:'',
-  // }
+
   project:any={
     projectId:0,
     projectTitle:'',

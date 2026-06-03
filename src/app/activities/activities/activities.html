@@ -19,7 +19,7 @@
 @if (activities()) {
     <div class="container">
         @for (item of activities(); track item.activityId){
-            <div class="member-card">
+            <div class="card">
                 <img class="member-photo" src="{{item.activityPhotoUrl}}" alt="">
                 <p>Title: {{item.activityDate}}</p>
                 <p>Description: {{item.activityDescription}}</p>

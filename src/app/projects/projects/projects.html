@@ -19,7 +19,7 @@
 @if (projects()) {
     <div class="container">
         @for (item of projects(); track item.projectId){
-            <div class="member-card">
+            <div class="card">
                 <img class="member-photo" src="{{item.projectPhotoUrl}}" alt="">
                 <p>Titre: {{item.projectTitle}}</p>
                 <p>Description: {{item.projectDescription}}</p>
