@@ -32,3 +32,56 @@
   background: lightblue;
 }
 
+button {
+  // width: 100%;
+  padding: 10px;
+  // background:red;
+  // border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: powderblue;
+  color: white;
+}
+.btn:hover {
+  background-color: green;
+}
+
+#updateButon{
+  background-color: green;
+  margin: 5px;
+}
+
+#deleteButton{
+  background-color: red;
+  margin: 5px;
+}
+#cancelButton{
+  background-color: blue;
+  margin: 5px;
+}
+
+.member-card {
+
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  flex: 1;
+  width: 50%;
+  // display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+

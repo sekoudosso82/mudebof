@@ -13,7 +13,7 @@
     <button (click)="SortbyNomFunc()">Titre A-Z</button>
     <button (click)="SortbyPrenomFunc()">Status A-Z</button>
     <button (click)="SortbyRoleFunc()">Date A-Z</button>
-    <button [routerLink]="['/addactivity']">Ajouter avtivite</button>
+    <button id="ajoutButton" [routerLink]="['/addactivity']">Ajouter activite</button>
 </div>
 
 @if (activities()) {
@@ -21,7 +21,7 @@
         @for (item of activities(); track item.activityId){
             <div class="member-card">
                 <img class="member-photo" src="{{item.activityPhotoUrl}}" alt="">
-                <p>Title: {{item.activityTitle}}</p>
+                <p>Title: {{item.activityDate}}</p>
                 <p>Description: {{item.activityDescription}}</p>
                 <p>Title: {{item.activityStatus}}</p>
                 <button class="detailButton" [routerLink]="['/detailactivity', item.activityId]">Detail</button>

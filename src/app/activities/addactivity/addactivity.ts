@@ -16,7 +16,6 @@ export class Addactivity implements OnInit{
     activityId:0,
     activityTitle:'',
     activityDescription:'',
-    // activityDate:'',
     activityDate: new Date(),
     activityStatus:'',
     activityPhotoUrl:'',
@@ -30,62 +29,16 @@ export class Addactivity implements OnInit{
       private router:Router,
       private http: HttpClient,
       private fb: FormBuilder,
-  ) {
-    //   this.activityForm = this.fb.group({
-    //   activityId:0,
-    //   activityTitle: ['', [
-    //     Validators.required, 
-    //     Validators.minLength(2), 
-    //     Validators.maxLength(50),
-    //     Validators.pattern(/^[a-zA-Z0-9_]+$/)
-    //   ]],
-    //   activityDescription: ['', [
-    //     Validators.required, 
-    //     Validators.minLength(2), 
-    //     // Validators.maxLength(40)
-    //   ]],
-    //   activityStatus: ['', [
-    //     Validators.required,
-    //     Validators.minLength(2),
-    //     // Validators.maxLength(20),
-    //     // Validators.pattern(/^[a-zA-Z0-9_]+$/)
-    //   ]],
-    //   activityPhotoUrl: [null], //photo: '',
-    //   dateJoined:new Date(),
-
-    // })
-    }
+  ) {}
     ngOnInit(): void {}
-    
-    // AddNewActivity():void{
-    //   if (this.activityForm.valid) {
-    //     console.log("activityForm");
-    //     console.log(this.activityForm.value);
-    //     const fd = new FormData();
-    //     fd.append('activityId', this.activityForm.value.activityId);
-    //     fd.append('activityTitle', this.activityForm.value.activityTitle);
-    //     fd.append('activityDescription', this.activityForm.value.activityDescription);
-    //     fd.append('activityStatus', this.activityForm.value.activityStatus);
-    //     fd.append('dateJoined', Date());
-    //     fd.append('activityPhotoUrl',  this.selectedFile.name);
-    //     console.log(`formData to be send ${fd}`)
-    //     // if (this.selectedFile) { formData.append('activityPhotoUrl', this.selectedFile);}
-    //     this.SaveActivity(fd);
-    //     // alert('Member Registered Successfully!');
-    //   }
-    // }
+
     SaveActivity():void{
-      // // if (this.activityForm.valid) {
-      //   console.log("activity");
-      //   console.log(this.activity);
-      //   console.log("selectedFile");
-      //   console.log(this.selectedFile);
         const fd = new FormData();
         fd.append('activityId', this.activity.activityId);
         fd.append('activityTitle', this.activity.activityTitle);
         fd.append('activityDescription', this.activity.activityDescription);
         fd.append('activityStatus', this.activity.activityStatus);
-        fd.append('dateJoined', Date());
+        // fd.append('activityDate', Date());
         if (this.selectedFile) { fd.append('activityPhotoUrl', this.selectedFile);}
         // console.log(`fd photourl: ${fd.get('activityPhotoUrl')}`)
         this.SaveActivityFromService(fd);

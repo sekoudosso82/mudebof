@@ -2,10 +2,7 @@
 <!-- <div class="class2"> -->
     <!-- <p class="class1">Plus d'information</p> -->
     @if (member()) {
-
-
-        <!-- <div class="img-wrapper"> <img [src]="member.photo" alt="{{ member.nom }}" /> </div> -->
-        <!-- <div class="info"> -->
+        <div class="member-card">
             <p>memId: {{ member()?.nom}}</p>
             <p>Nom: {{ member()?.nom }}</p>
             <p>Prenom(s): {{ member()?.prenoms }}</p>
@@ -19,10 +16,12 @@
             <p class="role">Role: {{member()?.role}}</p>
             <p class="role">Actif: {{member()?.isActive}}</p>
             
-            <button [routerLink]="['/updatemember', member()?.memberId]">Update</button>
-            <button [routerLink]="['/deletemember', member()?.memberId]">Supprimer</button>
-            <!-- <button class="deleteButton" (click)="DeleteMember(member()?.memberId)"> Delete </button> -->
-            <button routerLink="/members">Retour</button>
+            <button id="updateButon" [routerLink]="['/updatemember', member()?.memberId]">Update</button>
+            <button id="deleteButton" [routerLink]="['/deletemember', member()?.memberId]">Supprimer</button>
+            <button id="cancelButton" routerLink="/members">Retour</button>
+        </div>
+
+
 
         <!-- </div> -->
     }

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Interfaceactivity } from '../interfaceactivity';
 import { Serviceactivity } from '../serviceactivity';
@@ -7,12 +7,11 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-activities',
-  // imports: [],
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './activities.html',
   styleUrl: './activities.scss',
 })
-export class Activities {
+export class Activities implements OnInit{
     activities = signal<Interfaceactivity[]>([]);
 
     constructor(

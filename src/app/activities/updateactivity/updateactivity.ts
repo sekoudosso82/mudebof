@@ -33,36 +33,7 @@ export class Updateactivity implements OnInit {
     private fb: FormBuilder,
     private router:Router,
   )
-  {  
-    // this.activity = this.serviceactivity.activity; 
-    // this.activity = this.fb.group({
-    //   activityId:this.activity()?.activityId,
-    //   activityTitle: [this.activity()?.activityTitle, [
-    //     Validators.required, 
-    //     Validators.minLength(2), 
-    //     Validators.maxLength(10),
-    //     Validators.pattern(/^[a-zA-Z0-9_]+$/)
-    //   ]],
-    //   activityDescription: [this.activity()?.activityDescription,  [
-    //     Validators.required, 
-    //     Validators.minLength(2), 
-    //     Validators.maxLength(40)
-    //   ]],
-    //   activityStatus: [this.activity()?.activityStatus, [
-    //     Validators.required,
-    //     Validators.minLength(2),
-    //     Validators.maxLength(20),
-    //     Validators.pattern(/^[a-zA-Z0-9_]+$/)
-    //   ]],
-    //   activityDate: [this.activity()?.activityDate, [
-    //     Validators.required,
-    //     Validators.minLength(2),
-    //     Validators.maxLength(20),
-    //     Validators.pattern(/^[a-zA-Z0-9_]+$/)
-    //   ]],
-      
-    // });
-  }
+  {}
 
   actId = Number(this.route.snapshot.params['id']);
   

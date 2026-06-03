@@ -1,0 +1,16 @@
+<!-- <p>detailproject works!</p> -->
+
+@if (project()) {
+    <div class="member-card">
+        <img class="member-photo" src="{{project()?.projectPhotoUrl}}" alt="">
+        <p>Titre: {{ project()?.projectTitle }}</p>
+        <p>Description: {{ project()?.projectDescription }}</p>
+        <p>Date: {{project()?.projectDate}}</p>
+        <p>Status: {{project()?.projectStatus}}</p>
+        <button id="updateButon" [routerLink]="['/updateproject', project()?.projectId]">Update</button>
+        <button id="deleteButon" [routerLink]="['/deleteproject', project()?.projectId]">Supprimer</button>
+        <!-- <button class="deleteButton" (click)="Deleteproject(project()?.projectId)"> Delete </button> -->
+        <button id="returnButon" routerLink="/projects">Retour</button>
+    </div>
+
+}

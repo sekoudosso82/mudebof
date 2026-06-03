@@ -16,6 +16,13 @@ import { Addactivity } from './activities/addactivity/addactivity';
 import { Detailactivity } from './activities/detailactivity/detailactivity';
 import { Updateactivity } from './activities/updateactivity/updateactivity';
 import { Deleteactivity } from './activities/deleteactivity/deleteactivity';
+import { Addreglement } from './reglements/addreglement/addreglement';
+import { Updatereglement } from './reglements/updatereglement/updatereglement';
+import { Deletereglement } from './reglements/deletereglement/deletereglement';
+import { Addproject } from './projects/addproject/addproject';
+import { Detailproject } from './projects/detailproject/detailproject';
+import { Updateproject } from './projects/updateproject/updateproject';
+import { Deleteproject } from './projects/deleteproject/deleteproject';
 
 export const routes: Routes = [
     {path: '', redirectTo: '**', pathMatch: 'full'},
@@ -26,8 +33,16 @@ export const routes: Routes = [
     {path: 'deletemember/:id', component: Deletemember, canActivate:[authGuardGuard]},
 
     {path: 'reglements', component: Reglements, canActivate:[authGuardGuard]},
+    {path: 'addareglement', component: Addreglement, canActivate:[authGuardGuard]},
+    {path: 'detailreglement/:id', component: Detailmember, canActivate:[authGuardGuard]},
+    {path: 'updatereglement/:id', component: Updatereglement, canActivate:[authGuardGuard]},
+    {path: 'deletereglement/:id', component: Deletereglement, canActivate:[authGuardGuard]},
 
     {path: 'projects', component: Projects, canActivate:[authGuardGuard]},
+    {path: 'addaproject', component: Addproject, canActivate:[authGuardGuard]},
+    {path: 'detailproject/:id', component: Detailproject, canActivate:[authGuardGuard]},
+    {path: 'updateproject/:id', component: Updateproject, canActivate:[authGuardGuard]},
+    {path: 'deleteproject/:id', component: Deleteproject, canActivate:[authGuardGuard]},
 
     {path: 'activities', component: Activities, canActivate:[authGuardGuard]},
     {path: 'addactivity', component: Addactivity, canActivate:[authGuardGuard]},

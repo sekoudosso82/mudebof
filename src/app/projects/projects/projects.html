@@ -9,3 +9,32 @@
         <li><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
     </ul> 
 </nav>
+<div class="class1">
+    <button (click)="SortbyNomFunc()">Titre A-Z</button>
+    <button (click)="SortbyPrenomFunc()">Status A-Z</button>
+    <button (click)="SortbyRoleFunc()">Date A-Z</button>
+    <button id="ajoutButton" [routerLink]="['/addaproject']">Ajouter Projet</button>
+</div>
+
+@if (projects()) {
+    <div class="container">
+        @for (item of projects(); track item.projectId){
+            <div class="member-card">
+                <img class="member-photo" src="{{item.projectPhotoUrl}}" alt="">
+                <p>Titre: {{item.projectTitle}}</p>
+                <p>Description: {{item.projectDescription}}</p>
+                <p>Status: {{item.projectStatus}}</p>
+                <p>Date: {{item.projectDate}}</p>
+                <button class="detailButton" [routerLink]="['/detailproject', item.projectId]">Detail</button>
+            </div>                    
+        }
+    </div>
+}
+
+                    <!-- "projectId": 1,
+                    "projectTitle": null,
+                    "projectDescription": "yyyyyyyyyyyyyyyy",
+                    "projectStatus": "Nouveau",
+                    "projectDate": "2026-06-03T00:00:00",
+                    "projectPhotoUrl": "http://localhost:5243/project-photo/df9001d9-a608-4fe7-a995-c26605956172mudeboLogo.jpeg" -->
+
