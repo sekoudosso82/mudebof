@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+//   height: 100vh;
+}
+
+
+
+button {
+  width: 50%;
+  padding: 10px;
+//   border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px 20px;
+//   border: none;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  background-color: powderblue;
+  color: white;
+}
+
+
+
+#validerButton{
+  background-color: red;
+  margin: 5px;
+}
+#cancelButton{
+  background-color: blue;
+  margin: 5px;
+}

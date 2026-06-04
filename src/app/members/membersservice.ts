@@ -24,8 +24,8 @@ export class Membersservice {
     location:'',
     phone:0,
     email:'',
-    status:'',
-    photo:'',
+    // status:'',
+    memberPhotoUrl:'',
     dateJoined:new Date(),
     isActive:true,
   }
@@ -40,62 +40,60 @@ export class Membersservice {
       })
     }
   }
-// http://localhost:5243/api/Members
-  GetMembersList(){
-    const token = this.auth.GetToken();
-    console.log(`current members ${token}`)
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<MembersInterface[]>('http://localhost:5243/api/Members', {headers})
-    // return this.http.get<Members[]>('http://localhost:5243/api/Members', {headers})
-  }
+// baseUrl: http://localhost:5243/api/Members
 
-  GetMemberById(membId:number): Observable<any>{
+
+CreateMember(formData:FormData): Observable<any>{
+  console.log(" formData in service Member")
+  formData.forEach((value, key) => { console.log(`${key}:`, value)});
+  const token = this.auth.GetToken();
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.post('http://localhost:5243/api/Members/CreateMember', formData)
+}
+
+GetMembersList(){
+  const token = this.auth.GetToken();
+  console.log(`current members ${token}`)
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<MembersInterface[]>('http://localhost:5243/api/Members', {headers})
+}
+
+GetMemberById(membId:number): Observable<any>{
     console.log(` memId in service: ${membId}`)
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<any>(`http://localhost:5243/api/Members/${membId}?memberId=${membId}`, {headers})
                                             // http://localhost:5243/api/Members
 
-  }
+}
 
-  AddMember(memb:MembersInterface): Observable<any>{
-    const token = this.auth.GetToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<MembersInterface>('http://localhost:5243/api/Members/CreateNewMember', memb)
-  }
-
-  RegisterMember(memb:MembersInterface): Observable<any>{
+RegisterMember(memb:MembersInterface): Observable<any>{
     // const token = this.auth.GetToken();
     // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post<MembersInterface>('http://localhost:5243/api/Members/RegisterMember', memb)
-  }
+}
 
-  CreateMemberWithPhoto(formData:FormData): Observable<any>{
-    const token = this.auth.GetToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post('http://localhost:5243/api/Members/CreateMemberWithPhoto', formData)
-  }
+UpdateMember(formData:FormData): Observable<any>{
+    console.log('we are in Update Member func in service');
+    console.log("update Project")
+    formData.forEach((value, key) => { console.log(`${key}:`, value)});
 
-  
-  UpdateMember(formData:FormData): Observable<any>{
-    console.log('we are in UpdateMember func in service');
-      console.log(`new member nom is: ${formData.get('nom')}`);
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put<MembersInterface>('http://localhost:5243/api/Members/'+Number(formData.get('memberId')),formData, {headers})
-  }
+}
 
-  DeleteMember(membId:Number): Observable<any>{
+DeleteMember(membId:Number): Observable<any>{
     console.log(`memberId to be  deleted from memberService ${membId}`);
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete<MembersInterface>(`http://localhost:5243/api/Members/${membId}?memberId=${membId}`, {headers})
                                               //  http://localhost:5243/api/Members/1?memberId=1
-  }
+}
 
-  AuthorizedMemb(memb:MembersInterface){this.authorizedMember=memb;}
+AuthorizedMemb(memb:MembersInterface){this.authorizedMember=memb;}
 
-  GetCurrentMember():MembersInterface{return this.authorizedMember;}
+GetCurrentMember():MembersInterface{return this.authorizedMember;}
 
 // signal state
   member = signal<MembersInterface | null>(null);
@@ -113,8 +111,8 @@ export class Membersservice {
       location:'',
       phone:0,
       email:'',
-      status:'',
-      photo:'',
+      // status:'',
+      memberPhotoUrl:'',
       dateJoined:new Date(),
       isActive:true,
     };

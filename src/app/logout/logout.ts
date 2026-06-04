@@ -57,8 +57,8 @@ export class Logout {
       this.memberService.AuthorizedMemb(this.destroyMember);
       this.DestroyCredential();
       this.logoutMember = this.memberService.GetCurrentMember();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
 
     }
-    Cancel() { this.router.navigate(['/members']); }
+    Cancel() { this.router.navigate(['/reglements']); }
 }

@@ -62,14 +62,22 @@
           @if(memberForm.get('location')?.errors?.['maxlength']) 
             {<small>Invalid, au plus 40 characteres </small>}
         </div>
+
+        <!-- <div>
+          <label for="role">Role</label>
+          <select formControlName="role" name="role">
+            <option value="Membre">Membre</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div> -->
     
         <div class="form-group">
           <label for="phone">Phone</label>
           <input type="number" formControlName="phone" placeholder={{member()?.phone}}>
           @if(memberForm.get('phone')?.errors?.['required']) 
             {<small>numero telephone obligatoire</small>}
-          @if(memberForm.get('phone')?.errors?.['pattern']) 
-            { <small>Invalid, doit etre 10 digits </small> }
+          <!-- @if(memberForm.get('phone')?.errors?.['pattern']) 
+            { <small>Invalid, doit etre 10 digits </small> } -->
         </div>
     
         <div class="form-group">

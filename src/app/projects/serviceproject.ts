@@ -24,7 +24,7 @@ export class Serviceproject {
       })
     }
   }
-  // http://localhost:5243/api/Projects/CreateNewProject
+  //baseUrl: http://localhost:5243/api/Projects/
 
   CreateProject(formData:FormData): Observable<any>{
     console.log(" formData in service project")
@@ -42,13 +42,23 @@ export class Serviceproject {
       return this.http.get<InterfaceProject[]>('http://localhost:5243/api/Projects', {headers})
   }
 
-   GetProjectById(projId:number): Observable<any>{
+  GetProjectById(projId:number): Observable<any>{
     console.log(` ProjectId in service: ${projId}`)
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     // return this.http.get<any>(`http://localhost:5243/api/Projects/${projId}`, {headers})
     return this.http.get<any>(`http://localhost:5243/api/Projects/${projId}?ProjectId=${projId}`, {headers})
 
+  }
+
+  UpdateProject(formData:FormData): Observable<any>{
+    console.log('we are in update Project func in service');
+    // console.log(`new Project tittle is: ${formData.get('ProjectTitle')}`);
+    console.log("update Project")
+    formData.forEach((value, key) => { console.log(`${key}:`, value)});
+    const token = this.auth.GetToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<InterfaceProject>('http://localhost:5243/api/Projects/'+Number(formData.get('ProjectId')),formData, {headers})
   }
 
   DeleteProject(projId:Number): Observable<any>{
@@ -58,15 +68,7 @@ export class Serviceproject {
     return this.http.delete<InterfaceProject>(`http://localhost:5243/api/Projects/${projId}?ProjectId=${projId}`, {headers})
   }
 
-  UpdateProject(formData:FormData): Observable<any>{
-    console.log('we are in update Project func in service');
-    // console.log(`new Project tittle is: ${formData.get('ProjectTitle')}`);
-    console.log("update Project")
-    formData.forEach((value, key) => { console.log(`${key}:`, value)});
-      const token = this.auth.GetToken();
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.put<InterfaceProject>('http://localhost:5243/api/Projects/'+Number(formData.get('ProjectId')),formData, {headers})
-  }
+
 
   // signal state
   project = signal<InterfaceProject | null>(null);

@@ -30,7 +30,7 @@ export class Addproject implements OnInit{
       private http: HttpClient,
       private fb: FormBuilder,
   ) {}
-    ngOnInit(): void {}
+  ngOnInit(): void {}
 
     SaveProject():void{
         const fd = new FormData();
@@ -46,7 +46,7 @@ export class Addproject implements OnInit{
       }
     
     SaveprojectFromService(formData: FormData):void{
-       console.log(" formData in  project ts")
+      console.log(" formData in  project ts")
       formData.forEach((value, key) => { console.log(`${key}:`, value)});
 
       this.serviceproject.CreateProject(formData).subscribe(
@@ -64,9 +64,6 @@ export class Addproject implements OnInit{
     }
 
   onFileSelected(event: any) {
-    // console.log(`event: ${event}`)
-    // console.log(`event target: ${event.target.files[0]}`)
-
     const file  = event.target.files[0];
     // console.log(`current file : ${file}`)
     if (file) {

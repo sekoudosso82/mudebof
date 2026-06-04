@@ -3,6 +3,6 @@ export interface InterfaceProject {
     projectTitle:string,
     projectDescription:string,
     projectStatus:string,
-    projectDate: Date,
+    projectDate:Date,
     projectPhotoUrl:string,
 }

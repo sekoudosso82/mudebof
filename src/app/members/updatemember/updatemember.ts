@@ -59,7 +59,7 @@ export class Updatemember implements OnInit {
       ]],
       phone:[this.member()?.phone, [ 
         Validators.required, 
-        Validators.pattern(/^[0-9]{10}$/)
+        // Validators.pattern(/^[0-9]{10}$/)
       ]],
       // email:this.member()?.email, 
       email: [this.member()?.email, [

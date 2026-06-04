@@ -1,5 +1,5 @@
 export interface MembersInterface {
-    memberId:number,
+    memberId?:number,
     nom:string,
     prenoms:string,
     userName:string,
@@ -8,8 +8,8 @@ export interface MembersInterface {
     location:string,
     phone:number,
     email:string,
-    status:string,
-    photo:string,
+    // status:string,
+    memberPhotoUrl:string,
     dateJoined:Date,
     isActive:boolean,
 }
