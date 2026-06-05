@@ -37,30 +37,14 @@
   text-decoration: underline;
 }
 
-/* Content area below fixed navbar */
-.content {
-  padding: 1.5rem;
-  margin-top: 60px; /* same as navbar height */
-}
-/* navbar end */
-
-.myNavBar{
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    width: 100%;
-    background-color: lightblue;
-    padding: 1%;
-    z-index: 1000;
-    margin-bottom: 2%;
+.logo {
+  max-height: 50px;
+  width: auto;
 }
 
-button{
-    background-color: bisque;
-    color: white;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 1rem;
+@media (max-width: 768px) {
+  .logo {
+    max-height: 35px;
+  }
 }
+
