@@ -38,8 +38,7 @@ export class Updateproject implements OnInit {
   
   ngOnInit():void{
     console.log("ngOnInit");
-        console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
-
+    console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
     this.serviceproject.GetProjectById(this.projectId).subscribe(
       x => {
         // this.memeber=x; 
@@ -47,14 +46,11 @@ export class Updateproject implements OnInit {
         this.projectSignal.set(x);
         this.project=x;
         console.log(`project id after fetch: ${this.projectSignal()?.projectId}`);
-        // this.project.update(x);
-        // console.log(`project name after update: ${this.memeber?.nom}`);
       },
       y => {console.log(`There was an error ${y}`)}
     );
     console.log(`project name after oninit: ${this.project()?.projectTitle}`)
-        console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
-
+    console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
   };
 
   UpdateprojectData():void{

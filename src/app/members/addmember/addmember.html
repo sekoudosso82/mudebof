@@ -1,81 +1,58 @@
-
+<h3>Ajouter un Membre</h3>
 
 <div class="container">
-  <form [formGroup]="memberForm" (ngSubmit)="AddNewMember()" class="card">
+  <form (ngSubmit)="SaveMember()" class="card">
     <h2>Entrez vos informations</h2>
     <div class="form-group">
       <!-- <label>Nom</label> -->
-      <input type="text" formControlName="nom" placeholder="Entrez votre nom">
-        @if(memberForm.get('nom')?.errors?.['required']) 
-          {<small>Obligatoire</small>}
-        @if(memberForm.get('nom')?.errors?.['minlength']) 
-          {<small>Invalid, au moins 2 characteres </small>}
-        @if(memberForm.get('nom')?.errors?.['maxlength']) 
-          {<small>Invalid, au plus 10 characteres </small>}
-        @if(memberForm.get('nom')?.errors?.['pattern']) 
-          { <small>ne comporte pas d'espace </small> }
+      <input type="text" [(ngModel)]="member.nom" 
+              name="nom" placeholder="Entrez votre nom"> 
     </div>
+  
     <div class="form-group">
       <!-- <label>Prenoms</label> -->
-      <input type="text" formControlName="prenoms" placeholder="Entrez votre prenom(s)">
-        @if(memberForm.get('prenoms')?.errors?.['required']) 
-          {<small>Obligatoire</small>}
-        @if(memberForm.get('prenoms')?.errors?.['minlength']) 
-          {<small>Invalid, au moins 2 characteres </small>}
-        @if(memberForm.get('prenoms')?.errors?.['maxlength']) 
-          {<small>Invalid, au plus 40 characteres </small>}
+      <input type="text" [(ngModel)]="member.prenoms" 
+              name="prenoms"  placeholder="Entrez votre prenom(s)">
     </div>
     <div class="form-group">
       <!-- <label>Nom d'utilisateur</label> -->
-      <input type="text" formControlName="userName" placeholder="Entrez votre nom d'utilisateur">
-        @if(memberForm.get('userName')?.errors?.['required']) 
-          {<small>Obligatoire</small>}
-        @if(memberForm.get('userName')?.errors?.['minlength']) 
-          {<small>Invalid, au moins 2 characteres </small>}
-        @if(memberForm.get('userName')?.errors?.['maxlength']) 
-          {<small>Invalid, au plus 20 characteres </small>}
-        @if(memberForm.get('userName')?.errors?.['pattern']) 
-          { <small>ne comporte pas d'espace </small> }
+      <input type="text" [(ngModel)]="member.userName" name="userName" placeholder="Entrez votre nom d'utilisateur">
     </div>
     <div class="form-group">
       <!-- <label>Mot de pass</label> -->
-      <input type="text" formControlName="password" placeholder="Creez votre mot de pass">
-        @if(memberForm.get('password')?.errors?.['required']) 
-          {<small>Obligatoire</small>}
-        @if(memberForm.get('password')?.errors?.['minlength']) 
-          {<small>Invalid, au moins 2 characteres </small>}
-        @if(memberForm.get('password')?.errors?.['maxlength']) 
-          {<small>Invalid, au plus 20 characteres </small>}
-        @if(memberForm.get('password')?.errors?.['pattern']) 
-          { <small>ne comporte pas d'espace </small> }
+      <input type="text" [(ngModel)]="member.password" name="password" placeholder="Creez votre mot de pass">
     </div>
     <div class="form-group">
       <!-- <label>Ville</label> -->
-      <input type="text" formControlName="location" placeholder="Ville de residence">
-        @if(memberForm.get('location')?.errors?.['required']) 
-          {<small>Obligatoire</small>}
-        @if(memberForm.get('location')?.errors?.['minlength']) 
-          {<small>Invalid, au moins 2 characteres </small>}
-        @if(memberForm.get('location')?.errors?.['maxlength']) 
-          {<small>Invalid, au plus 40 characteres </small>}
+      <input type="text"  [(ngModel)]="member.location" name="location" placeholder="Ville de residence">
     </div>
     <div class="form-group">
       <!-- <label>Telephone</label> -->
-      <input type="number" formControlName="phone" placeholder="numero Telephone">
-      @if(memberForm.get('phone')?.errors?.['required']) 
-        {<small>numero telephone obligatoire</small>}
-      @if(memberForm.get('phone')?.errors?.['pattern']) 
-        { <small>Invalid, doit etre 10 digits </small> }
+      <input type="number" [(ngModel)]="member.phone" name="phone" placeholder="numero Telephone">
     </div>
     <div class="form-group">
       <!-- <label>Email</label> -->
-      <input type="email" formControlName="email" placeholder="Votre email">
-        <!-- @if(memberForm.get('email')?.errors?.['email'])  -->
-        @if(memberForm.get('email')?.touched && memberForm.get('email')?.errors?.['email'])
-        {<small>email format incorrect</small>}
+      <input type="email" [(ngModel)]="member.email" name="email" placeholder="Votre email">
     </div>
-    <button id="validerButton" type="submit" [disabled]="memberForm.invalid">Valider</button>
+    <div class="form-group">
+      <!-- <label>Email</label> -->
+      <input type="text" [(ngModel)]="member.role" name="role" placeholder="Votre role">
+    </div>
+    <div>
+      <label for="accessLevel">Niveau d'access</label>
+      <select [(ngModel)]="member.accessLevel" name="role">
+        <option value="Membre">Membre</option>
+        <option value="Admin">Admin</option>
+      </select>
+    </div>
+  
+    <input type="file" (change)="onFileSelected($event)" accept="image/*">
+  
+    @if(imagePreview) { <img [src]="imagePreview" width="150" height="150"> }
+  
+    <button id="validerButton" type="submit">Valider</button>
     <button id="cancelButton" routerLink="/members">Annuler</button>
-
   </form>
 </div>
+
+

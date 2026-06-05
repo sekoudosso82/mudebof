@@ -58,7 +58,7 @@ export class Serviceproject {
     formData.forEach((value, key) => { console.log(`${key}:`, value)});
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put<InterfaceProject>('http://localhost:5243/api/Projects/'+Number(formData.get('ProjectId')),formData, {headers})
+    return this.http.put<InterfaceProject>('http://localhost:5243/api/Projects/'+Number(formData.get('projectId')),formData, {headers})
   }
 
   DeleteProject(projId:Number): Observable<any>{

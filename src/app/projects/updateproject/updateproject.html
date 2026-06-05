@@ -3,7 +3,8 @@
   <form (ngSubmit)="UpdateprojectData()" class="card">
     <h2>Entrez les informations</h2>
     <div class="form-group">
-      <input type="text" [(ngModel)]="project.projectTitle" 
+      <input type="text" 
+             [(ngModel)]="project.projectTitle" 
              name="projectTitle" 
              placeholder="{{projectSignal()?.projectTitle}}">
        

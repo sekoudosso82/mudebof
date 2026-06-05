@@ -6,6 +6,7 @@ export interface MembersInterface {
     password:string,
     role:string,
     location:string,
+    accessLevel:string,
     phone:number,
     email:string,
     // status:string,

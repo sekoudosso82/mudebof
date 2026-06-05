@@ -1,15 +1,15 @@
-<!-- <button routerLink="/members">Member detail</button> -->
-<!-- <div class="class2"> -->
-    <!-- <p class="class1">Plus d'information</p> -->
+
     @if (member()) {
         <div class="member-card">
-            <p>memId: {{ member()?.nom}}</p>
+            <h3>{{ member()?.nom}} Informations</h3>
+            <img class="member-photo" src="{{member()?.memberPhotoUrl}}" alt="">
             <p>Nom: {{ member()?.nom }}</p>
             <p>Prenom(s): {{ member()?.prenoms }}</p>
             <p class="role">Nom utilisateur: {{member()?.userName}}</p>
             <p class="role">Mot de pass: {{member()?.password}}</p>
             <p class="role">Role: {{member()?.role}}</p>
-            <p class="role">Ville ou Location: {{member()?.location}}</p>
+            <p class="accessLevel">Niveau d'access: {{member()?.accessLevel}}</p>
+            <p class="role">Ville/Residence: {{member()?.location}}</p>
             <p class="role">Telephone: {{member()?.phone}}</p>
             <p class="email">email: {{member()?.email}}</p>
             <p class="role">date enregistrement: {{member()?.dateJoined| date:'mediumDate'}}</p>
@@ -17,8 +17,8 @@
             <p class="role">Actif: {{member()?.isActive}}</p>
             
             <button id="updateButon" [routerLink]="['/updatemember', member()?.memberId]">Update</button>
-            <button id="deleteButton" [routerLink]="['/deletemember', member()?.memberId]">Supprimer</button>
-            <button id="cancelButton" routerLink="/members">Retour</button>
+            <button id="deleteButon" [routerLink]="['/deletemember', member()?.memberId]">Supprimer</button>
+            <button id="returnButon" routerLink="/members">Retour</button>
         </div>
 
 

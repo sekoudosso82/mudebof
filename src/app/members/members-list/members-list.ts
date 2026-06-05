@@ -18,34 +18,26 @@ import { RouterLinkActive } from '@angular/router';
 })
 export class MembersList implements OnInit{
   // var 
-  
-  // memberArr? : MembersInterface[];
-  members = signal<MembersInterface[]>([]);
+    members = signal<MembersInterface[]>([]);
  
   un=localStorage.getItem('un');
   pw=localStorage.getItem('p');
 
-  memberDetail?: MembersInterface;
-  chosenMember?: MembersInterface;
   loggedMember?: MembersInterface;
-  showAddMember?: boolean=false;
-
   authorizedMemb:any;
-  roleValue: any;
-
   logoutMember? : MembersInterface={
     memberId:0, nom:'', prenoms:'', userName:'',
-    password:'', role:'', location:'', phone:0,
-    email:'', status:'', photo:'', dateJoined:new Date(), isActive:true,
+    password:'', role:'', accessLevel:'Membre', location:'', phone:0,
+    email:'', memberPhotoUrl:'', dateJoined:new Date(), isActive:true,
   }
 
-  @Output() membLogoutEvent = new EventEmitter<MembersInterface>()
     constructor(
       private memberservice:Membersservice,
       private router:Router, 
       private auth:Authservice,
       private http: HttpClient
     ){}
+
     ngOnInit():void{
       console.log(`token after refresh: ${localStorage.getItem('token')}`)
       this.memberservice.GetMembersList().subscribe(
@@ -56,8 +48,6 @@ export class MembersList implements OnInit{
         },
         y=> {console.log(`There was an error ${y}`)}
       );
-      // console.log(`current membersss ngoninit ${this.memberArr?.length}`)
-
       var value = this.auth.GetToken();
       console.log(`token: ${value}`);
       this.LoggedMemberData();
@@ -66,14 +56,11 @@ export class MembersList implements OnInit{
   // upload photo end
     LoggedMemberData():void{
       console.log(`logged mem cred in locale storage ${this.un} & ${this.pw}`);
-      this.loggedMember = this.members()?.find(memb=>memb.userName===this.un);
+      this.loggedMember = this.members()?.find(memb=>memb.userName===this.un && memb.password===this.pw);
       console.log(`member array: ${this.members()}`)
       console.log(`${this.loggedMember?.userName} is currently logged`);
     }
 
-    // MemberDetail(memb:Number):void{
-    //   this.chosenMember = this.memberArr?.find(x=>x.memberId===memb);
-    // }
     DeleteMember(memId:Number):void{
       this.memberservice.DeleteMember(memId).subscribe(
         x=>{
@@ -97,9 +84,7 @@ export class MembersList implements OnInit{
     SortbyRoleFunc():void{
       this.members.set(this.members()?.sort((a,b) => a.role.localeCompare(b.role)));
     }
-    SortbyStatusFunc():void{
-      this.members.set(this.members()?.sort((a,b) => a.status.localeCompare(b.status)));
-    }
+
     SortbyLocationFunc():void{
       this.members.set(this.members()?.sort((a,b) => a.location.localeCompare(b.location)));
     }

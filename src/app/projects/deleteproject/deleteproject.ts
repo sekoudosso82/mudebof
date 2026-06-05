@@ -29,7 +29,7 @@ export class Deleteproject {
       x=>{
         this.result = x;
         console.log('activity was deleted');
-        alert('activity was deleted');
+        alert(`${x.nom}  was deleted`);
         this.router.navigate(['/projects']);
       },
       y=>{

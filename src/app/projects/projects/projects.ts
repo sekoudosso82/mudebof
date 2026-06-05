@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './projects.scss',
 })
 export class Projects implements OnInit{
+  // var
     projects = signal<InterfaceProject[]>([]);
 
     constructor(
@@ -44,7 +45,7 @@ export class Projects implements OnInit{
     SortbyPrenomFunc():void{
       this.projects.set(this.projects()?.sort((a,b) => a.projectStatus.localeCompare(b.projectStatus)));
     }
-    SortbyRoleFunc():void{
+    SortbyDateFunc():void{
       // this.projects.sort(this.projects()?.sort((a,b) => a.ProjectDate.localeCompare(b.ProjectDate)));
       this.projects.update(projects => 
         [...projects].sort (

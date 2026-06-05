@@ -16,22 +16,11 @@ export class Deletemember {
     private memberService:Membersservice,
     private router:Router
   ){}
+
   memId = Number(this.route.snapshot.params['id']);
+
   ngOnInit():void{
     console.log(`memberId to be  deleted ${this.memId}`);
-    // this.memberService.DeleteMember(this.memId).subscribe(
-    //   x=>{
-    //     this.result = x;
-    //     console.log('member was deleted');
-    //     alert('member was deleted');
-    //     this.router.navigate(['/members']);
-    //   },
-    //   y=>{
-    //     console.log(`there was an error ${y}`);
-    //     alert('there was an error');
-    //     this.router.navigate(['/members']);
-    //   }
-    // )
   }
   
   DeleteMember(memId:Number):void{
@@ -39,7 +28,7 @@ export class Deletemember {
       x=>{
         this.result = x;
         console.log('member was deleted');
-        alert('member was deleted');
+        alert(`${x.nom}  was deleted`);
         this.router.navigate(['/members']);
       },
       y=>{

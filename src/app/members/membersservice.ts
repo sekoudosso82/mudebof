@@ -21,6 +21,7 @@ export class Membersservice {
     userName:'',
     password:'',
     role:'',
+    accessLevel:'Member',
     location:'',
     phone:0,
     email:'',
@@ -83,6 +84,8 @@ UpdateMember(formData:FormData): Observable<any>{
     return this.http.put<MembersInterface>('http://localhost:5243/api/Members/'+Number(formData.get('memberId')),formData, {headers})
 }
 
+
+
 DeleteMember(membId:Number): Observable<any>{
     console.log(`memberId to be  deleted from memberService ${membId}`);
     const token = this.auth.GetToken();
@@ -108,6 +111,7 @@ GetCurrentMember():MembersInterface{return this.authorizedMember;}
       userName:'',
       password:'',
       role:'',
+      accessLevel:'',
       location:'',
       phone:0,
       email:'',

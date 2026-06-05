@@ -19,6 +19,7 @@ export class Addmember implements OnInit{
       userName:'',
       password:'',
       role:'',
+      accessLevel:'',
       location:'',
       phone:0,
       email:'',
@@ -26,7 +27,7 @@ export class Addmember implements OnInit{
       dateJoined:new Date(),
       isActive:true,
       memberPhotoUrl: '',
-    }
+  }
 
   // var 
   selectedFile!: File;
@@ -49,10 +50,11 @@ export class Addmember implements OnInit{
       fd.append('userName', this.member.userName);
       fd.append('password', this.member.password);
       fd.append('role', this.member.role);
+      fd.append('accessLevel', this.member.accessLevel);
       fd.append('location', this.member.location);
       fd.append('phone', this.member.phone);
       fd.append('email', this.member.email);
-      fd.append('dateJoined', Date());
+      // fd.append('dateJoined', Date());
       fd.append('email', this.member.isActive);
       if (this.selectedFile) { fd.append('memberPhotoUrl', this.selectedFile);}
         this.SaveMemberFromService(fd);

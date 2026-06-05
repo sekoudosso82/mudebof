@@ -1,16 +1,9 @@
+<h3>Supprimer ce membre</h3>
+
 <div asp-validation-summary="ModeleOnly" class="container">
     <div>
-        <!-- @if(result){
-            <p>Member was deleted</p>
-        } -->
-        <!-- @else {
-            <p>there was an error Member was not deleted</p>
-        } -->
-            <!-- <p>logout works!</p> -->
-
-        <button  id="deleteButton" title="Delete member" (click)="DeleteMember(memId)"> Confimer</button>
-        <button  id="cancelButton" title="return to member" (click)="Cancel()"> Annuler</button>
-
-
+        <button  id="deleteButton" title="Delete member" (click)="DeleteMember(memId)">Confimer</button>
+        <button  id="cancelButton" title="return to members" (click)="Cancel()"> Annuler</button>
     </div>
 </div>
+

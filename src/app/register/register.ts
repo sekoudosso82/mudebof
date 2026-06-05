@@ -26,12 +26,13 @@ export class Register  implements OnInit{
       prenoms:'',
       userName:'',
       password:'',
-      role:'Membre',
+      role:'',
+      accessLevel:'Member',
       location:'',
       phone:0,
       email:'',
-      photo: '',
-      status:'',
+      memberPhotoUrl: '',
+      // status:'',
       dateJoined:new Date(),
       isActive:true,
     }
@@ -41,12 +42,13 @@ export class Register  implements OnInit{
       prenoms:'',
       userName:'',
       password:'',
-      role:'Membre',
+      role:'',
+      accessLevel:'Member',
       location:'',
       phone:0,
       email:'',
-      photo: '',
-      status:'',
+      memberPhotoUrl: '',
+      // status:'',
       dateJoined:new Date(),
       isActive:true,
     }
@@ -131,7 +133,7 @@ export class Register  implements OnInit{
       formData.append('phone', this.memberForm.value.phone);
       formData.append('email', this.memberForm.value.email);
       if (this.selectedFile) {
-        formData.append('photo', this.selectedFile);
+        formData.append('memberPhotoUrl', this.selectedFile);
       }
         this.RegisterMember(formData);
         console.log('createMemberResult');
@@ -142,7 +144,7 @@ export class Register  implements OnInit{
     RegisterMember(formData: FormData):void{
       console.log('we are in register member func');
       console.log(`new member nom is: ${formData.get('nom')}`);
-      this.memberService.CreateMemberWithPhoto(formData).subscribe(
+      this.memberService.CreateMember(formData).subscribe(
         x => {
           this.router.navigate(['/home'])
           alert('nouveau membre ajouter');

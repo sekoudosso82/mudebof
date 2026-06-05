@@ -13,9 +13,25 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 export class Updatemember implements OnInit {
   // var 
   route: ActivatedRoute = inject(ActivatedRoute);
-  member = signal<MembersInterface | null>(null); // signal state
+  memberSignal = signal<MembersInterface | null>(null); // signal state
 
-  memberForm: FormGroup;
+   member:any ={
+      memberId:0,
+      nom:'',
+      prenoms:'',
+      userName:'',
+      password:'',
+      role:'',
+      accessLevel:'',
+      location:'',
+      phone:0,
+      email:'',
+      // status:'',
+      dateJoined:new Date(),
+      isActive:true,
+      memberPhotoUrl: '',
+  }
+
   selectedFile!: File;
   imagePreview: string | ArrayBuffer | null = null;
 
@@ -24,97 +40,45 @@ export class Updatemember implements OnInit {
     private fb: FormBuilder,
     private router:Router,
   )
-  {  
-    this.member = this.memberservice.member; 
-    this.memberForm = this.fb.group({
-      memberId:this.member()?.memberId,
-      nom: [this.member()?.nom, [
-        Validators.required, 
-        Validators.minLength(2), 
-        Validators.maxLength(10),
-        Validators.pattern(/^[a-zA-Z0-9_]+$/)
-      ]],
-      prenoms: [this.member()?.prenoms,  [
-        Validators.required, 
-        Validators.minLength(2), 
-        Validators.maxLength(40)
-      ]],
-      userName: [this.member()?.userName, [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20),
-        Validators.pattern(/^[a-zA-Z0-9_]+$/)
-      ]],
-      password: [this.member()?.password, [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20),
-        Validators.pattern(/^[a-zA-Z0-9_]+$/)
-      ]],
-      role:'Membre',
-      location:[this.member()?.location, [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(40),
-      ]],
-      phone:[this.member()?.phone, [ 
-        Validators.required, 
-        // Validators.pattern(/^[0-9]{10}$/)
-      ]],
-      // email:this.member()?.email, 
-      email: [this.member()?.email, [
-        Validators.email, 
-        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
-      ]], 
-      // photo: [null], //photo: this.member()?.,
-      status:[this.member()?.status],
-      // dateJoint:new Date(),
-      isActive:this.member()?.status,
-    });
-  }
+  {}
 
   memId = Number(this.route.snapshot.params['id']);
   
   ngOnInit():void{
     console.log("ngOnInit");
-        console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
-
+    console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
     this.memberservice.GetMemberById(this.memId).subscribe(
       x => {
         // this.memeber=x; 
         console.log(`member name after x fetch: ${x.nom}`);
-        this.member.set(x);
-        console.log(`member name after fetch: ${this.member()?.nom}`);
-        // this.member.update(x);
-        // console.log(`member name after update: ${this.memeber?.nom}`);
+        this.memberSignal.set(x);
+        this.member=x;
+        console.log(`member name after fetch: ${this.memberSignal()?.nom}`);
       },
       y => {console.log(`There was an error ${y}`)}
     );
-    console.log(`member name after oninit: ${this.member()?.nom}`)
-        console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
+
+    console.log(`member name after oninit: ${this.memberSignal()?.nom}`)
+    console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
 
   };
 
   UpdateMemberData():void{
-    if (this.memberForm.valid) {
-      console.log(this.memberForm.value);
       const formData = new FormData();
-      formData.append('memberId', this.memberForm.value.memberId);
-      formData.append('nom', this.memberForm.value.nom);
-      formData.append('prenoms', this.memberForm.value.prenoms);
-      formData.append('userName', this.memberForm.value.userName);
-      formData.append('password', this.memberForm.value.password);
-      formData.append('role', this.memberForm.value.role);
-      formData.append('location', this.memberForm.value.location);
-      formData.append('phone', this.memberForm.value.phone);
-      formData.append('email', this.memberForm.value.email);
-      // if (this.selectedFile) { formData.append('photo', this.selectedFile);}
-        this.SaveUpdatedMember(formData);
+      formData.append('memberId', this.member.memberId);
+      formData.append('nom', this.member.nom);
+      formData.append('prenoms', this.member.prenoms);
+      formData.append('userName', this.member.userName);
+      formData.append('password', this.member.password);
+      formData.append('role', this.member.role);
+      formData.append('accessLevel', this.member.accessLevel);
+      formData.append('location', this.member.location);
+      formData.append('phone', this.member.phone);
+      formData.append('email', this.member.email);
+      if (this.selectedFile) { formData.append('memberPhotoUrl', this.selectedFile);}
+        
+      this.SaveUpdatedMember(formData);
         // alert('Member updated Successfully!');
-    }
-    else{
-      console.log('memberForm not valid');
-    }
   }
 
   SaveUpdatedMember(formData: FormData):void{
@@ -123,15 +87,30 @@ export class Updatemember implements OnInit {
       this.memberservice.UpdateMember(formData).subscribe(
         x => {
           this.router.navigate(['/members'])
-          alert('nouveau membre ajouter');
+          alert('member was updated');
         },
         y =>{
           console.log('there was a problem');
-          alert('new member was not registered');
+          alert(' member was not updated');
           this.router.navigate(['/members']);
           console.log(y);
         }
       );
+  }
+
+  
+  onFileSelected(event: any) {
+    const file  = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(file);
     }
+  }
+
+
 
 }
