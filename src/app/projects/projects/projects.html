@@ -1,5 +1,6 @@
 
 <nav class="navbar">
+    <img src="images/mudeboLogo.jpeg" class="logo">
     <ul class="nav-links">
       <li><a routerLink="/members" routerLinkActive="active">MEMBRES</a></li>
       <li><a routerLink="/activities" routerLinkActive="active">ACTIVITES</a></li>
@@ -24,7 +25,7 @@
                 <p>Titre: {{item.projectTitle}}</p>
                 <p>Description: {{item.projectDescription}}</p>
                 <p>Status: {{item.projectStatus}}</p>
-                <p>Date: {{item.projectDate}}</p>
+                <p>Date: {{item.projectDate| date:'yyyy-MM-dd'}}</p>
                 <button class="detailButton" [routerLink]="['/detailproject', item.projectId]">Detail</button>
             </div>                    
         }

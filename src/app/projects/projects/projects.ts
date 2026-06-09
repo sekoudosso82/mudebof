@@ -4,10 +4,11 @@ import { InterfaceProject } from '../interface-project';
 import { Serviceproject } from '../serviceproject';
 import { Authservice } from '../../authservice';
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-projects',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, DatePipe],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })

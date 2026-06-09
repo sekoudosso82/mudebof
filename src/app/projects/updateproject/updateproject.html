@@ -1,12 +1,24 @@
-<h3>Update ce Project</h3>
 <div class="container">
   <form (ngSubmit)="UpdateprojectData()" class="card">
-    <h2>Entrez les informations</h2>
+    <h3>Update ce Project</h3>
+    <!-- <h2>Entrez les informations</h2> -->
     <div class="form-group">
       <input type="text" 
              [(ngModel)]="project.projectTitle" 
              name="projectTitle" 
-             placeholder="{{projectSignal()?.projectTitle}}">
+             placeholder="{{projectSignal()?.projectTitle}}" 
+             required minlength="3"
+            #projectTitle="ngModel"
+      > 
+      @if(projectTitle.invalid && projectTitle.touched)
+      {
+        <div>
+          @if(projectTitle.errors?.['required'])
+          {<small>Titre Obligatoire</small>}
+          @if(projectTitle.errors?.['minlength'])
+          {<small>le titre doit etre au moins 3 characteres</small>}
+        </div>
+      }  
        
     </div>
     <div class="form-group">

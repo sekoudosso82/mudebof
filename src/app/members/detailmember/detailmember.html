@@ -1,10 +1,8 @@
 
     @if (member()) {
         <div class="member-card">
-            <h3>{{ member()?.nom}} Informations</h3>
             <img class="member-photo" src="{{member()?.memberPhotoUrl}}" alt="">
-            <p>Nom: {{ member()?.nom }}</p>
-            <p>Prenom(s): {{ member()?.prenoms }}</p>
+            <h3>{{ member()?.nom }} {{ member()?.prenoms }}</h3>
             <p class="role">Nom utilisateur: {{member()?.userName}}</p>
             <p class="role">Mot de pass: {{member()?.password}}</p>
             <p class="role">Role: {{member()?.role}}</p>
@@ -13,7 +11,6 @@
             <p class="role">Telephone: {{member()?.phone}}</p>
             <p class="email">email: {{member()?.email}}</p>
             <p class="role">date enregistrement: {{member()?.dateJoined| date:'mediumDate'}}</p>
-            <p class="role">Role: {{member()?.role}}</p>
             <p class="role">Actif: {{member()?.isActive}}</p>
             
             <button id="updateButon" [routerLink]="['/updatemember', member()?.memberId]">Update</button>

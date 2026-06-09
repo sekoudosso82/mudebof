@@ -83,7 +83,7 @@ export class Updateactivity implements OnInit {
         },
         y =>{
           console.log('there was a problem');
-          alert('new activity was not registered');
+          alert('activity was not updated');
           this.router.navigate(['/activities']);
           console.log(y);
         }

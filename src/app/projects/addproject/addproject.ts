@@ -52,7 +52,7 @@ export class Addproject implements OnInit{
       this.serviceproject.CreateProject(formData).subscribe(
         x => {
           this.router.navigate(['/projects'])
-          alert('nouvelle activite ajoutee');
+          alert(' project ajoutee');
         },
         y =>{
           console.log('there was a problem');

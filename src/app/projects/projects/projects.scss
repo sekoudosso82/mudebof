@@ -67,15 +67,15 @@ button{
 }
 
 .class1{
-    // background-color: goldenrod;
     left: 0;
     right: 0;
-    // width: 100%;
     display: flex;
     justify-content: center; /* horizontal */
     align-items: center;     /* vertical */
-    margin: 0;
-      z-index: 1000;
+    z-index: 1000;
+    margin-top: 65px; /* if navbar is fixed */
+    margin-bottom: 20px;
+
 
     // padding: 4px;
     // border: 2px solid red;  
@@ -133,5 +133,18 @@ a:hover {
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr; /* 1 card per row on mobile */
+  }
+}
+
+// logo
+
+.logo {
+  max-height: 50px;
+  width: auto;
+}
+
+@media (max-width: 50px) {
+  .logo {
+    max-height: 50px;
   }
 }

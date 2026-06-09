@@ -95,3 +95,16 @@ h3{
   text-align: center;
   background-color: goldenrod;
 }
+
+// logo
+
+.logo {
+  max-height: 50px;
+  width: auto;
+}
+
+@media (max-width: 50px) {
+  .logo {
+    max-height: 50px;
+  }
+}

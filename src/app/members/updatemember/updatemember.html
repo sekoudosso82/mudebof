@@ -1,30 +1,89 @@
 
-<h3>Update ce Membre</h3>
 <div class="container">
   <form (ngSubmit)="UpdateMemberData()" class="card">
-    <h2>Entrez vos informations</h2>
+    <h3>Update les informations de {{memberSignal()?.nom}} {{memberSignal()?.prenoms}}</h3>
     <div class="form-group">
       <!-- <label>Nom</label> -->
-      <input type="text" 
-             [(ngModel)]="member.nom" 
-             name="nom" 
-             placeholder="{{memberSignal()?.nom}}"> 
+      <input type="text" [(ngModel)]="member.nom" 
+             name="nom"  placeholder="{{memberSignal()?.nom}}"
+             required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
+             #nom="ngModel"
+      > 
+      @if(nom.invalid && nom.touched)
+      {
+        <div>
+          @if(nom.errors?.['required'])
+          {<small>Nom Obligatoire</small>}
+          @if(nom.errors?.['pattern'])
+          {<small>pas d'espace dans le Nom</small>}
+          @if(nom.errors?.['minlength'])
+          {<small>le nom doit doit etre entre 3-20 characteres</small>}
+          @if(nom.errors?.['maxlength'])
+          {<small>le nom doit doit etre entre 3-20 characteres</small>} 
+        </div>
+      }  
     </div>
   
     <div class="form-group">
       <!-- <label>Prenoms</label> -->
-      <input type="text" [(ngModel)]="member.Prenoms" 
-             name="Prenoms"  placeholder="{{memberSignal()?.prenoms}}">
+      <input type="text" [(ngModel)]="member.prenoms" 
+             name="prenoms"  placeholder="{{memberSignal()?.prenoms}}"
+             required minlength="3" maxlength="50"
+             #prenoms="ngModel"
+      > 
+      @if(prenoms.invalid && prenoms.touched)
+      {
+        <div>
+          @if(prenoms.errors?.['required'])
+          {<small>Prenom(s) Obligatoire</small>}
+          @if(prenoms.errors?.['minlength'])
+          {<small>Prenom(s) doit etre entre 3-50 characteres</small>}
+          @if(prenoms.errors?.['maxlength'])
+          {<small>Prenom(s) doit etre entre 3-50 characteres</small>} 
+        </div>
+      }
     </div>
     <div class="form-group">
       <!-- <label>Nom d'utilisateur</label> -->
       <input type="text" [(ngModel)]="member.userName" 
-             name="userName" placeholder="{{memberSignal()?.userName}}">
+             name="userName" placeholder="{{memberSignal()?.userName}}"
+             required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
+             #userName="ngModel"
+      > 
+      @if(userName.invalid && userName.touched)
+      {
+        <div>
+          @if(userName.errors?.['required'])
+          {<small>userName Obligatoire</small>}
+          @if(userName.errors?.['pattern'])
+          {<small>pas d'espace dans le userName</small>}
+          @if(userName.errors?.['minlength'])
+          {<small>le userName doit etre entre 3-20 characteres</small>}
+          @if(userName.errors?.['maxlength'])
+          {<small>le userName doit etre entre 3-20 characteres</small>} 
+        </div>
+      } 
     </div>
     <div class="form-group">
       <!-- <label>Mot de pass</label> -->
       <input type="text" [(ngModel)]="member.password" 
-             name="password" placeholder="{{memberSignal()?.password}}">
+             name="password" placeholder="{{memberSignal()?.password}}" 
+             required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
+             #password="ngModel"
+      > 
+      @if(password.invalid && password.touched)
+      {
+        <div>
+          @if(password.errors?.['required'])
+          {<small>password Obligatoire</small>}
+          @if(password.errors?.['pattern'])
+          {<small>pas d'espace dans le password</small>}
+          @if(password.errors?.['minlength'])
+          {<small>le password doit etre entre 3-20 characteres</small>}
+          @if(password.errors?.['maxlength'])
+          {<small>le password doit etre entre 3-20 characteres</small>} 
+        </div>
+      } 
     </div>
     <div class="form-group">
       <!-- <label>Ville</label> -->

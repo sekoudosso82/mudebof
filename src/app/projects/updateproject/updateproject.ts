@@ -76,7 +76,7 @@ export class Updateproject implements OnInit {
         },
         y =>{
           console.log('there was a problem');
-          alert('new project was not registered');
+          alert('project was not registered');
           this.router.navigate(['/projects']);
           console.log(y);
         }

@@ -67,11 +67,11 @@ export class Addmember implements OnInit{
     this.memberService.CreateMember(formData).subscribe(
       x => {
         this.router.navigate(['/members'])
-        alert('nouveau membre ajouter');
+        // alert('nouveau membre ajouter');
       },
       y =>{
         console.log('there was a problem');
-        alert('new member was not registered');
+        // alert('new member was not registered');
         this.router.navigate(['/members']);
         console.log(y);
       }

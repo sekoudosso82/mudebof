@@ -1,11 +1,10 @@
-<h3>Detail activite</h3>
 
 @if (activity()) {
     <div class="member-card">
         <img class="member-photo" src="{{activity()?.activityPhotoUrl}}" alt="">
-        <p>Titre: {{ activity()?.activityTitle }}</p>
+        <h3>{{ activity()?.activityTitle }}</h3>
         <p>Description: {{ activity()?.activityDescription }}</p>
-        <p>Date: {{activity()?.activityDate}}</p>
+        <p>Date: {{activity()?.activityDate| date:'yyyy-MM-dd'}}</p>
         <p>Status: {{activity()?.activityStatus}}</p>
         <button id="updateButon" [routerLink]="['/updatectivity', activity()?.activityId]">Update</button>
         <button id="deleteButon" [routerLink]="['/deleteactivity', activity()?.activityId]">Supprimer</button>

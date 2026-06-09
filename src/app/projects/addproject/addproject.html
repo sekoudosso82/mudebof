@@ -3,7 +3,20 @@
   <form (ngSubmit)="SaveProject()" class="card">
     <h2>Entrez les informations</h2>
     <div class="form-group">
-      <input type="text" [(ngModel)]="project.projectTitle" name="projectTitle" placeholder="Nom du project">
+      <input type="text" [(ngModel)]="project.projectTitle" 
+            name="projectTitle" placeholder="Nom du project"
+            required minlength="3"
+            #projectTitle="ngModel"
+      > 
+      @if(projectTitle.invalid && projectTitle.touched)
+      {
+        <div>
+          @if(projectTitle.errors?.['required'])
+          {<small>Titre Obligatoire</small>}
+          @if(projectTitle.errors?.['minlength'])
+          {<small>le titre doit etre au moins 3 characteres</small>}
+        </div>
+      }  
        
     </div>
     <div class="form-group">

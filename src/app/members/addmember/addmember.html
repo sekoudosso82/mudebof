@@ -5,22 +5,88 @@
     <h2>Entrez vos informations</h2>
     <div class="form-group">
       <!-- <label>Nom</label> -->
-      <input type="text" [(ngModel)]="member.nom" 
-              name="nom" placeholder="Entrez votre nom"> 
+      <input type="text"
+             name="nom"  
+             [(ngModel)]="member.nom" 
+              placeholder="Entrez votre nom"
+              required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
+              #nom="ngModel"
+      > 
+      @if(nom.invalid && nom.touched)
+      {
+        <div>
+          @if(nom.errors?.['required'])
+          {<small>Nom Obligatoire</small>}
+          @if(nom.errors?.['pattern'])
+          {<small>pas d'espace dans le Nom</small>}
+          @if(nom.errors?.['minlength'])
+          {<small>le nom doit doit etre entre 3-20 characteres</small>}
+          @if(nom.errors?.['maxlength'])
+          {<small>le nom doit doit etre entre 3-20 characteres</small>} 
+        </div>
+      }  
     </div>
   
     <div class="form-group">
       <!-- <label>Prenoms</label> -->
       <input type="text" [(ngModel)]="member.prenoms" 
-              name="prenoms"  placeholder="Entrez votre prenom(s)">
+              name="prenoms"  placeholder="Entrez votre prenom(s)"
+              required minlength="3" maxlength="50"
+              #prenoms="ngModel"
+      > 
+      @if(prenoms.invalid && prenoms.touched)
+      {
+        <div>
+          @if(prenoms.errors?.['required'])
+          {<small>Prenom(s) Obligatoire</small>}
+          @if(prenoms.errors?.['minlength'])
+          {<small>Prenom(s) doit etre entre 3-50 characteres</small>}
+          @if(prenoms.errors?.['maxlength'])
+          {<small>Prenom(s) doit etre entre 3-50 characteres</small>} 
+        </div>
+      }
     </div>
     <div class="form-group">
       <!-- <label>Nom d'utilisateur</label> -->
-      <input type="text" [(ngModel)]="member.userName" name="userName" placeholder="Entrez votre nom d'utilisateur">
+      <input type="text" [(ngModel)]="member.userName" 
+             name="userName" placeholder="Entrez votre nom d'utilisateur"
+             required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
+             #userName="ngModel"
+      > 
+      @if(userName.invalid && userName.touched)
+      {
+        <div>
+          @if(userName.errors?.['required'])
+          {<small>userName Obligatoire</small>}
+          @if(userName.errors?.['pattern'])
+          {<small>pas d'espace dans le userName</small>}
+          @if(userName.errors?.['minlength'])
+          {<small>le userName doit etre entre 3-20 characteres</small>}
+          @if(userName.errors?.['maxlength'])
+          {<small>le userName doit etre entre 3-20 characteres</small>} 
+        </div>
+      } 
     </div>
     <div class="form-group">
       <!-- <label>Mot de pass</label> -->
-      <input type="text" [(ngModel)]="member.password" name="password" placeholder="Creez votre mot de pass">
+      <input type="text" [(ngModel)]="member.password" 
+             name="password" placeholder="Creez votre mot de pass"
+             required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
+             #password="ngModel"
+      > 
+      @if(password.invalid && password.touched)
+      {
+        <div>
+          @if(password.errors?.['required'])
+          {<small>password Obligatoire</small>}
+          @if(password.errors?.['pattern'])
+          {<small>pas d'espace dans le password</small>}
+          @if(password.errors?.['minlength'])
+          {<small>le password doit etre entre 3-20 characteres</small>}
+          @if(password.errors?.['maxlength'])
+          {<small>le password doit etre entre 3-20 characteres</small>} 
+        </div>
+      } 
     </div>
     <div class="form-group">
       <!-- <label>Ville</label> -->

@@ -1,10 +1,10 @@
-<h3>Detail du Projet</h3>
 @if (project()) {
     <div class="member-card">
+        <h3>Detail du Projet</h3>
         <img class="member-photo" src="{{project()?.projectPhotoUrl}}" alt="">
-        <p>Titre: {{ project()?.projectTitle }}</p>
+        <h3>{{ project()?.projectTitle }}</h3>
         <p>Description: {{ project()?.projectDescription }}</p>
-        <p>Date: {{project()?.projectDate}}</p>
+        <p>Date: {{project()?.projectDate| date:'yyyy-MM-dd'}}</p>
         <p>Status: {{project()?.projectStatus}}</p>
         <button id="updateButon" [routerLink]="['/updateproject', project()?.projectId]">Update</button>
         <button id="deleteButon" [routerLink]="['/deleteproject', project()?.projectId]">Supprimer</button>
