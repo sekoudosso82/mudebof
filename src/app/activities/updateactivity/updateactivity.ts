@@ -79,11 +79,11 @@ export class Updateactivity implements OnInit {
       this.serviceactivity.UpdateActivity(formData).subscribe(
         x => {
           this.router.navigate(['/activities'])
-          alert('Activity was updated');
+          // alert('Activity was updated');
         },
         y =>{
           console.log('there was a problem');
-          alert('activity was not updated');
+          // alert('activity was not updated');
           this.router.navigate(['/activities']);
           console.log(y);
         }

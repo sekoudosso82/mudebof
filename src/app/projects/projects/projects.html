@@ -14,18 +14,20 @@
     <button (click)="SortbyNomFunc()">Titre A-Z</button>
     <button (click)="SortbyPrenomFunc()">Status A-Z</button>
     <button (click)="SortbyDateFunc()">Date A-Z</button>
-    <button id="ajoutButton" [routerLink]="['/addaproject']">Ajouter Projet</button>
+    @if(loggedMember()?.accessLevel==='Admin'){
+        <button id="ajoutButton" [routerLink]="['/addaproject']">Ajouter Projet</button>
+    }
 </div>
 
 @if (projects()) {
     <div class="container">
         @for (item of projects(); track item.projectId){
-            <div class="card">
+            <div class="member-card" [routerLink]="['/detailproject', item.projectId]">
                 <img class="member-photo" src="{{item.projectPhotoUrl}}" alt="">
                 <p>Titre: {{item.projectTitle}}</p>
-                <p>Description: {{item.projectDescription}}</p>
-                <p>Status: {{item.projectStatus}}</p>
-                <p>Date: {{item.projectDate| date:'yyyy-MM-dd'}}</p>
+                <!-- <p>Description: {{item.projectDescription}}</p> -->
+                <!-- <p>Status: {{item.projectStatus}}</p> -->
+                <!-- <p>Date: {{item.projectDate| date:'yyyy-MM-dd'}}</p> -->
                 <button class="detailButton" [routerLink]="['/detailproject', item.projectId]">Detail</button>
             </div>                    
         }

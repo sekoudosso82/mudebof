@@ -46,6 +46,17 @@
 .t1{
     width: 20%;
 }
+
+.memb {
+  background-color: red;
+}
+.memb:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.12);
+  background-color: red;
+}
+
+
 .detailButton{
     background-color: blue;
 }
@@ -68,20 +79,14 @@ button{
 }
 
 .class1{
-    // background-color: goldenrod;
     left: 0;
     right: 0;
-    // top: 200px;
-    // width: 100%;
     display: flex;
     justify-content: center; /* horizontal */
     align-items: center;     /* vertical */
     margin: 0;
-      z-index: 1000;
+    z-index: 1000;
     margin-top: 65px; /* if navbar is fixed */
-
-    // padding: 4px;
-    // border: 2px solid red;  
 }
 .page-container {
   margin-top: 60px; /* if navbar is fixed */

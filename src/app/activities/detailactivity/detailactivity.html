@@ -6,8 +6,12 @@
         <p>Description: {{ activity()?.activityDescription }}</p>
         <p>Date: {{activity()?.activityDate| date:'yyyy-MM-dd'}}</p>
         <p>Status: {{activity()?.activityStatus}}</p>
-        <button id="updateButon" [routerLink]="['/updatectivity', activity()?.activityId]">Update</button>
-        <button id="deleteButon" [routerLink]="['/deleteactivity', activity()?.activityId]">Supprimer</button>
+
+        @if(loggedMember()?.accessLevel==='Admin'){
+            <button id="updateButon" [routerLink]="['/updatectivity', activity()?.activityId]">Update</button>
+            <button id="deleteButon" [routerLink]="['/deleteactivity', activity()?.activityId]">Supprimer</button>
+        }
+
         <!-- <button class="deleteButton" (click)="Deleteactivity(activity()?.activityId)"> Delete </button> -->
         <button id="returnButon" routerLink="/activities">Retour</button>
     </div>

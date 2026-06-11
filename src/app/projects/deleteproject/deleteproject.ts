@@ -5,7 +5,7 @@ import { Serviceproject } from '../serviceproject';
 
 @Component({
   selector: 'app-deleteproject',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './deleteproject.html',
   styleUrl: './deleteproject.scss',
 })

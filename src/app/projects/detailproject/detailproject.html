@@ -6,9 +6,11 @@
         <p>Description: {{ project()?.projectDescription }}</p>
         <p>Date: {{project()?.projectDate| date:'yyyy-MM-dd'}}</p>
         <p>Status: {{project()?.projectStatus}}</p>
-        <button id="updateButon" [routerLink]="['/updateproject', project()?.projectId]">Update</button>
-        <button id="deleteButon" [routerLink]="['/deleteproject', project()?.projectId]">Supprimer</button>
-        <!-- <button class="deleteButton" (click)="Deleteproject(project()?.projectId)"> Delete </button> -->
+
+        @if(loggedMember()?.accessLevel==='Admin'){
+            <button id="updateButon" [routerLink]="['/updateproject', project()?.projectId]">Update</button>
+            <button id="deleteButon" [routerLink]="['/deleteproject', project()?.projectId]">Supprimer</button>
+        }
         <button id="returnButon" routerLink="/projects">Retour</button>
     </div>
 

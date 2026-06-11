@@ -6,7 +6,7 @@ imports: {RouterOutlet}
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLinkActive, RouterOutlet, CommonModule, RouterLink],
+  imports: [RouterOutlet, CommonModule,],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

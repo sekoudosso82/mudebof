@@ -12,9 +12,12 @@
             <p class="email">email: {{member()?.email}}</p>
             <p class="role">date enregistrement: {{member()?.dateJoined| date:'mediumDate'}}</p>
             <p class="role">Actif: {{member()?.isActive}}</p>
+
+             @if(loggedMember()?.memberId==memId || loggedMember()?.accessLevel==='Admin'){
+                <button id="updateButon" [routerLink]="['/updatemember', member()?.memberId]">Update</button>
+                <button id="deleteButon" [routerLink]="['/deletemember', member()?.memberId]">Supprimer</button>
+            }
             
-            <button id="updateButon" [routerLink]="['/updatemember', member()?.memberId]">Update</button>
-            <button id="deleteButon" [routerLink]="['/deletemember', member()?.memberId]">Supprimer</button>
             <button id="returnButon" routerLink="/members">Retour</button>
         </div>
 

@@ -91,7 +91,6 @@ DeleteMember(membId:Number): Observable<any>{
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete<MembersInterface>(`http://localhost:5243/api/Members/${membId}?memberId=${membId}`, {headers})
-                                              //  http://localhost:5243/api/Members/1?memberId=1
 }
 
 AuthorizedMemb(memb:MembersInterface){this.authorizedMember=memb;}

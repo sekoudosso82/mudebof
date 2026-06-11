@@ -4,7 +4,7 @@ import { Membersservice } from '../membersservice';
 
 @Component({
   selector: 'app-deletemember',
-  imports: [RouterLink],
+  imports:[],
   templateUrl: './deletemember.html',
   styleUrl: './deletemember.scss',
 })
@@ -28,12 +28,12 @@ export class Deletemember {
       x=>{
         this.result = x;
         console.log('member was deleted');
-        alert(`${x.nom}  was deleted`);
+        // alert(`${x.nom}  was deleted`);
         this.router.navigate(['/members']);
       },
       y=>{
         console.log(`there was an error ${y}`);
-        alert('there was an error');
+        // alert('there was an error');
         this.router.navigate(['/members']);
       }
     )

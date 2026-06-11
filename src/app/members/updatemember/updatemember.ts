@@ -87,11 +87,11 @@ export class Updatemember implements OnInit {
       this.memberservice.UpdateMember(formData).subscribe(
         x => {
           this.router.navigate(['/members'])
-          alert('member was updated');
+          // alert('member was updated');
         },
         y =>{
           console.log('there was a problem');
-          alert(' member was not updated');
+          // alert(' member was not updated');
           this.router.navigate(['/members']);
           console.log(y);
         }

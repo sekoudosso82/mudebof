@@ -4,6 +4,7 @@ import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { MembersInterface } from '../members-interface';
 import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
 import { DatePipe, NgIf } from '@angular/common';
+import { MembersList } from '../members-list/members-list';
 
 @Component({
   selector: 'app-detailmember',
@@ -15,14 +16,17 @@ export class Detailmember implements OnInit {
   // var 
   route: ActivatedRoute = inject(ActivatedRoute);
   member = signal<MembersInterface | null>(null);   // signal state
+  // loggedMember?: MembersInterface;
+  loggedMember = signal<MembersInterface | undefined>(undefined);   // signal state
+  un=localStorage.getItem('un');
+  pw=localStorage.getItem('p');
 
 
   constructor(
     private memberservice:Membersservice,
+    // private memberList:MembersList
   )
-  {
-    this.member = this.memberservice.member;
-  }
+  { this.member = this.memberservice.member; }
 
   memId = Number(this.route.snapshot.params['id']);
   
@@ -39,24 +43,18 @@ export class Detailmember implements OnInit {
         // console.log(`member name after update: ${this.memeber?.nom}`);
       },
       y => {console.log(`There was an error ${y}`)}
+      
     );
-    console.log(`member after oninit: ${this.member()}`)
-    console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
+    this.memberservice.GetMembersList().subscribe(
+        x => {
+          this.loggedMember.set(x.find(memb=>memb.userName===this.un && memb.password===this.pw));
+          console.log(`loggedMember role on member detail: ${this.loggedMember()?.role}`)
+          console.log(`loggedMember id on member detail: ${this.loggedMember()?.memberId}`)
+          console.log(`memId on member detail: ${this.memId}`)
+        },
+        y=> {console.log(`There was an error ${y}`)}
+    );
   };
-
-  // DeleteMember(memId:Number):void{
-  //     this.memberservice.DeleteMember(memId).subscribe(
-  //       x=>{
-  //         this.members.set(this.members()?.filter(member => member.memberId !== memId));
-  //         console.log('This memberhas been deleted');
-  //         this.router.navigate(['/members']);
-  //       },
-  //       y=>{
-  //         console.log('There was an error when deleting this member');
-  //         this.router.navigate(['/members']);
-  //       }
-  //     )
-  //   }
 
 }
 

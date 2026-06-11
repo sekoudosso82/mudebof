@@ -14,18 +14,20 @@
     <button (click)="SortbyNomFunc()">Titre A-Z</button>
     <button (click)="SortbyPrenomFunc()">Status A-Z</button>
     <button (click)="SortbyRoleFunc()">Date A-Z</button>
-    <button id="ajoutButton" [routerLink]="['/addactivity']">Ajouter activite</button>
+    @if(loggedMember()?.accessLevel==='Admin'){
+        <button id="ajoutButton" [routerLink]="['/addactivity']">Ajouter activite</button>
+    }
 </div>
 
 @if (activities()) {
     <div class="container">
         @for (item of activities(); track item.activityId){
-            <div class="card">
+            <div class="member-card" [routerLink]="['/detailactivity', item.activityId]">
                 <img class="member-photo" src="{{item.activityPhotoUrl}}" alt="">
                 <h3>{{item.activityTitle}}</h3>
-                <p>Description: {{item.activityDescription}}</p>
-                <p>Status: {{item.activityStatus}}</p>
-                <button class="detailButton" [routerLink]="['/detailactivity', item.activityId]">Detail</button>
+                <!-- <p>Description: {{item.activityDescription}}</p> -->
+                <!-- <p>Status: {{item.activityStatus}}</p> -->
+                <!-- <button class="detailButton" [routerLink]="['/detailactivity', item.activityId]">Detail</button> -->
             </div>                    
         }
     </div>

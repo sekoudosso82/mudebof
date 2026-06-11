@@ -18,15 +18,12 @@
           {<small>le titre doit etre au moins 3 characteres</small>}
         </div>
       } 
-
-       
+ 
     </div>
     <div class="form-group">
       <input type="text" [(ngModel)]="activity.activityDescription" name="activityDescription" placeholder="{{activitySignal()?.activityDescription}}">
     </div>
-    <!-- <div class="form-group">
-      <input type="text" [(ngModel)]="activity.activityStatus" name="activityStatus" placeholder="Entrez status">
-    </div> -->
+
     <div>
       <label for="activityStatus">Status</label>
       <select [(ngModel)]="activity.activityStatus" name="activityStatus">
@@ -40,7 +37,6 @@
 
     @if(imagePreview) { <img [src]="imagePreview" width="150" height="150"> }
 
-    
     <button id="validerButton" type="submit" >Valider</button>
     <button id="cancelButton" routerLink="/activities">Annuler</button>
 

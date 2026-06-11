@@ -3,6 +3,8 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Interfaceactivity } from '../interfaceactivity';
 import { Serviceactivity } from '../serviceactivity';
+import { Membersservice } from '../../members/membersservice';
+import { MembersInterface } from '../../members/members-interface';
 
 @Component({
   selector: 'app-detailactivity',
@@ -15,8 +17,14 @@ export class Detailactivity implements OnInit{
   route: ActivatedRoute = inject(ActivatedRoute);
   activity = signal<Interfaceactivity | null>(null);   // signal state
 
+  loggedMember = signal<MembersInterface | undefined>(undefined);   // signal state
+  un=localStorage.getItem('un');
+  pw=localStorage.getItem('p');
+
   constructor(
       private activityservice:Serviceactivity,
+      private membersservice:Membersservice
+      
   )
   {
       this.activity = this.activityservice.activity;
@@ -38,8 +46,16 @@ export class Detailactivity implements OnInit{
       },
       y => {console.log(`There was an error ${y}`)}
     );
-    console.log(`activity after oninit: ${this.activity()}`)
-    console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
+    this.membersservice.GetMembersList().subscribe(
+        x => {
+          this.loggedMember.set(x.find(memb=>memb.userName===this.un && memb.password===this.pw));
+          // console.log(`loggedMember role on member detail: ${this.loggedMember()?.role}`)
+          // console.log(`loggedMember id on member detail: ${this.loggedMember()?.memberId}`)
+        },
+        y=> {console.log(`There was an error ${y}`)}
+    );
+    // console.log(`activity after oninit: ${this.activity()}`)
+    // console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
   };
 
 

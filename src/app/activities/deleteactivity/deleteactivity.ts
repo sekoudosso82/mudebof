@@ -4,7 +4,7 @@ import { Serviceactivity } from '../serviceactivity';
 
 @Component({
   selector: 'app-deleteactivity',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './deleteactivity.html',
   styleUrl: './deleteactivity.scss',
 })
@@ -28,12 +28,12 @@ export class Deleteactivity {
       x=>{
         this.result = x;
         console.log('activity was deleted');
-        alert('activity was deleted');
+        // alert('activity was deleted');
         this.router.navigate(['/activities']);
       },
       y=>{
         console.log(`there was an error ${y}`);
-        alert('there was an error');
+        // alert('there was an error');
         this.router.navigate(['/activities']);
       }
     )

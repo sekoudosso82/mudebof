@@ -38,9 +38,7 @@ export class Addactivity implements OnInit{
         fd.append('activityTitle', this.activity.activityTitle);
         fd.append('activityDescription', this.activity.activityDescription);
         fd.append('activityStatus', this.activity.activityStatus);
-        // fd.append('activityDate', Date());
         if (this.selectedFile) { fd.append('activityPhotoUrl', this.selectedFile);}
-        // console.log(`fd photourl: ${fd.get('activityPhotoUrl')}`)
         this.SaveActivityFromService(fd);
         // alert('Member Registered Successfully!');
       }
@@ -51,11 +49,11 @@ export class Addactivity implements OnInit{
       this.activityService.CreateActivityWithPhoto(formData).subscribe(
         x => {
           this.router.navigate(['/activities'])
-          alert('nouvelle activite ajoutee');
+          // alert('nouvelle activite ajoutee');
         },
         y =>{
           console.log('there was a problem');
-          alert('new activity was not saved');
+          // alert('new activity was not saved');
           this.router.navigate(['/activities']);
           console.log(y);
         }

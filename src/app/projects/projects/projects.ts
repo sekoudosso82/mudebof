@@ -5,10 +5,12 @@ import { Serviceproject } from '../serviceproject';
 import { Authservice } from '../../authservice';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { Membersservice } from '../../members/membersservice';
+import { MembersInterface } from '../../members/members-interface';
 
 @Component({
   selector: 'app-projects',
-  imports: [RouterLink, RouterLinkActive, DatePipe],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })
@@ -16,8 +18,13 @@ export class Projects implements OnInit{
   // var
     projects = signal<InterfaceProject[]>([]);
 
+    loggedMember = signal<MembersInterface | undefined>(undefined);   // signal state
+    un=localStorage.getItem('un');
+    pw=localStorage.getItem('p');
+
     constructor(
       private serviceproject:Serviceproject,
+      private membersservice:Membersservice,
       private router:Router, 
       private auth:Authservice,
       private http: HttpClient
@@ -30,8 +37,15 @@ export class Projects implements OnInit{
         this.projects.set(x);
         console.log(`current projectArr ${this.projects().length}`)
         // console.log(`1st projectArr  ${this.projects()[0].ProjectId}`)
-
         // this.LoggedMemberData();
+        },
+        y=> {console.log(`There was an error ${y}`)}
+      );
+      this.membersservice.GetMembersList().subscribe(
+        x => {
+          this.loggedMember.set(x.find(memb=>memb.userName===this.un && memb.password===this.pw));
+          // console.log(`loggedMember role on member detail: ${this.loggedMember()?.role}`)
+          // console.log(`loggedMember id on member detail: ${this.loggedMember()?.memberId}`)
         },
         y=> {console.log(`There was an error ${y}`)}
       );
