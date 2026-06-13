@@ -5,8 +5,10 @@
     <h2>Entrez vos informations</h2>
     <div class="form-group">
       <!-- <label>Nom</label> -->
-      <input type="text" [(ngModel)]="member.nom" 
-              name="nom" placeholder="Entrez votre nom"
+      <input type="text"
+             name="nom"  
+             [(ngModel)]="member.nom" 
+              placeholder="Entrez votre nom"
               required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
               #nom="ngModel"
       > 
@@ -47,9 +49,9 @@
     <div class="form-group">
       <!-- <label>Nom d'utilisateur</label> -->
       <input type="text" [(ngModel)]="member.userName" 
-            name="userName" placeholder="Entrez votre nom d'utilisateur"
-            required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
-            #userName="ngModel"
+             name="userName" placeholder="Entrez votre nom d'utilisateur"
+             required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
+             #userName="ngModel"
       > 
       @if(userName.invalid && userName.touched)
       {
@@ -68,9 +70,9 @@
     <div class="form-group">
       <!-- <label>Mot de pass</label> -->
       <input type="text" [(ngModel)]="member.password" 
-            name="password" placeholder="Creez votre mot de pass"
-            required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
-            #password="ngModel"
+             name="password" placeholder="Creez votre mot de pass"
+             required pattern="^[a-zA-Z0-9_]+$" minlength="3" maxlength="20"
+             #password="ngModel"
       > 
       @if(password.invalid && password.touched)
       {
@@ -98,16 +100,11 @@
       <!-- <label>Email</label> -->
       <input type="email" [(ngModel)]="member.email" name="email" placeholder="Votre email">
     </div>
-    <!-- <div class="form-group">
-      <input type="text" [(ngModel)]="member.role" name="role" placeholder="Votre role">
-    </div> -->
-    <!-- <div>
-      <label for="accessLevel">Niveau d'access</label>
-      <select [(ngModel)]="member.accessLevel" name="role">
-        <option value="Membre">Membre</option>
-        <option value="Admin">Admin</option>
-      </select>
-    </div> -->
+    
+    <div class="form-group">
+      <!-- <label>Email</label> -->
+      <input type="text" [(ngModel)]="member.statut" name="statut" placeholder="Votre fonction">
+    </div>
   
     <input type="file" (change)="onFileSelected($event)" accept="image/*">
   

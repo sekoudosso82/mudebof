@@ -14,7 +14,7 @@
     <button (click)="SortbyNomFunc()">Titre A-Z</button>
     <button (click)="SortbyPrenomFunc()">Status A-Z</button>
     <button (click)="SortbyDateFunc()">Date A-Z</button>
-    @if(loggedMember()?.accessLevel==='Admin'){
+    @if(loggedMember()?.role==='Admin'){
         <button id="ajoutButton" [routerLink]="['/addaproject']">Ajouter Projet</button>
     }
 </div>

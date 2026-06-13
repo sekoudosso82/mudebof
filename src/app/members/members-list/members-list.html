@@ -17,7 +17,7 @@
     <button (click)="SortbyPrenomFunc()">Prenoms A-Z</button>
     <button (click)="SortbyLocationFunc()">Ville A-Z</button>
     <button (click)="SortbyRoleFunc()">Role A-Z</button>
-    @if(loggedMember?.accessLevel==='Admin'){
+    @if(loggedMember?.role==='Admin'){
         <button id="AjoutButton" [routerLink]="['/addmember']">Ajouter un membre</button>
     }
 </div>

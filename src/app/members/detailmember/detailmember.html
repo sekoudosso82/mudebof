@@ -6,14 +6,14 @@
             <p class="role">Nom utilisateur: {{member()?.userName}}</p>
             <p class="role">Mot de pass: {{member()?.password}}</p>
             <p class="role">Role: {{member()?.role}}</p>
-            <p class="accessLevel">Niveau d'access: {{member()?.accessLevel}}</p>
+            <p class="accessLevel">Fonction: {{member()?.statut}}</p>
             <p class="role">Ville/Residence: {{member()?.location}}</p>
             <p class="role">Telephone: {{member()?.phone}}</p>
             <p class="email">email: {{member()?.email}}</p>
             <p class="role">date enregistrement: {{member()?.dateJoined| date:'mediumDate'}}</p>
             <p class="role">Actif: {{member()?.isActive}}</p>
 
-             @if(loggedMember()?.memberId==memId || loggedMember()?.accessLevel==='Admin'){
+            @if(loggedMember()?.memberId==memId || loggedMember()?.role==='Admin'){
                 <button id="updateButon" [routerLink]="['/updatemember', member()?.memberId]">Update</button>
                 <button id="deleteButon" [routerLink]="['/deletemember', member()?.memberId]">Supprimer</button>
             }

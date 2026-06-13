@@ -24,20 +24,22 @@ export class Serviceactivity {
       })
     }
   }
-
+  // baseUlr = 'https://localhost:7097'
+  private baseUrl = 'https://localhost:7097/api/Activities';
+  
   CreateActivityWithPhoto(formData:FormData): Observable<any>{
     console.log("CreateActivityWithPhoto")
     formData.forEach((value, key) => { console.log(`${key}:`, value)});
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post('http://localhost:5243/api/Activities/CreateNewActivity', formData)
+    return this.http.post(`${this.baseUrl}/CreateNewActivity`, formData)
   }
 
   GetActivitiesList(){
       const token = this.auth.GetToken();
       // console.log(`current  ${token}`)
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.get<Interfaceactivity[]>('http://localhost:5243/api/Activities', {headers})
+      return this.http.get<Interfaceactivity[]>(`${this.baseUrl}`, {headers})
   }
 
    GetActivityById(actId:number): Observable<any>{
@@ -45,8 +47,8 @@ export class Serviceactivity {
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     // return this.http.get<any>(`http://localhost:5243/api/Activities/${actId}`, {headers})
-    return this.http.get<any>(`http://localhost:5243/api/Activities/${actId}?activityId=${actId}`, {headers})
-                              //  http://localhost:5243/api/Activities/2
+    // return this.http.get<any>(`http://localhost:5243/api/Activities/${actId}?activityId=${actId}`, {headers})
+    return this.http.get<any>(`${this.baseUrl}/${actId}?activityId=${actId}`, {headers})
 
   }
 
@@ -54,17 +56,22 @@ export class Serviceactivity {
     console.log(`actId to be  deleted from activityService ${actId}`);
     const token = this.auth.GetToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.delete<Interfaceactivity>(`http://localhost:5243/api/Activities/${actId}?activityId=${actId}`, {headers})
+    // return this.http.delete<Interfaceactivity>(`http://localhost:5243/api/Activities/${actId}?activityId=${actId}`, {headers})
+    return this.http.delete<Interfaceactivity>(`${this.baseUrl}/${actId}?activityId=${actId}`, {headers})
+
   }
 
-    UpdateActivity(formData:FormData): Observable<any>{
+  UpdateActivity(formData:FormData): Observable<any>{
       console.log('we are in UpdateActivity func in service');
         // console.log(`new activity tittle is: ${formData.get('activityTitle')}`);
             console.log("updateActivityWithPhoto")
     formData.forEach((value, key) => { console.log(`${key}:`, value)});
       const token = this.auth.GetToken();
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.put<Interfaceactivity>('http://localhost:5243/api/Activities/'+Number(formData.get('activityId')),formData, {headers})
+      // return this.http.put<Interfaceactivity>('http://localhost:5243/api/Activities/'+Number(formData.get('activityId')),formData, {headers})
+      return this.http.put<Interfaceactivity>(`${this.baseUrl}/`+Number(formData.get('activityId')),formData, {headers})
+      // return this.http.put<MembersInterface>(`${this.baseUrl}/`+ Number(formData.get('memberId')),formData, {headers})
+
     }
 
   // signal state

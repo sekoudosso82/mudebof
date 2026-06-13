@@ -19,11 +19,11 @@ export class Addmember implements OnInit{
       userName:'',
       password:'',
       role:'',
-      accessLevel:'',
+      statut:'',
+      // accessLevel:'',
       location:'',
       phone:0,
       email:'',
-      // status:'',
       dateJoined:new Date(),
       isActive:true,
       memberPhotoUrl: '',
@@ -50,7 +50,7 @@ export class Addmember implements OnInit{
       fd.append('userName', this.member.userName);
       fd.append('password', this.member.password);
       fd.append('role', this.member.role);
-      fd.append('accessLevel', this.member.accessLevel);
+      fd.append('statut', this.member.statut);
       fd.append('location', this.member.location);
       fd.append('phone', this.member.phone);
       fd.append('email', this.member.email);

@@ -14,6 +14,9 @@ export class Updatemember implements OnInit {
   // var 
   route: ActivatedRoute = inject(ActivatedRoute);
   memberSignal = signal<MembersInterface | null>(null); // signal state
+  loggedMember = signal<MembersInterface | undefined>(undefined);   // signal state
+  un=localStorage.getItem('un');
+  pw=localStorage.getItem('p');
 
    member:any ={
       memberId:0,
@@ -22,11 +25,10 @@ export class Updatemember implements OnInit {
       userName:'',
       password:'',
       role:'',
-      accessLevel:'',
+      statut:'',
       location:'',
       phone:0,
       email:'',
-      // status:'',
       dateJoined:new Date(),
       isActive:true,
       memberPhotoUrl: '',
@@ -57,6 +59,15 @@ export class Updatemember implements OnInit {
       },
       y => {console.log(`There was an error ${y}`)}
     );
+    this.memberservice.GetMembersList().subscribe(
+        x => {
+          this.loggedMember.set(x.find(memb=>memb.userName===this.un && memb.password===this.pw));
+          console.log(`loggedMember role on member detail: ${this.loggedMember()?.role}`)
+          console.log(`loggedMember id on member detail: ${this.loggedMember()?.memberId}`)
+          console.log(`memId on member detail: ${this.memId}`)
+        },
+        y=> {console.log(`There was an error ${y}`)}
+    );
 
     console.log(`member name after oninit: ${this.memberSignal()?.nom}`)
     console.log(`token after oninit refresh: ${localStorage.getItem('token')}`)
@@ -71,7 +82,7 @@ export class Updatemember implements OnInit {
       formData.append('userName', this.member.userName);
       formData.append('password', this.member.password);
       formData.append('role', this.member.role);
-      formData.append('accessLevel', this.member.accessLevel);
+      formData.append('statut', this.member.statut);
       formData.append('location', this.member.location);
       formData.append('phone', this.member.phone);
       formData.append('email', this.member.email);

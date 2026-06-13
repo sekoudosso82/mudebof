@@ -18,7 +18,10 @@ export class Authservice {
   }
 
   // private baseUrl = 'https://localhost:7097/api/Auth/login';
-  private baseUrl = 'http://localhost:5243/api/Auth';
+  // private baseUrl = 'http://localhost:5243/api/Auth';
+  private baseUrl = 'https://localhost:7097/api/Auth';
+    //  baseUrl = 'https://localhost:7097'
+  //  baseUrl: 'http://localhost:5243'
 
   constructor(private http:HttpClient){}
 

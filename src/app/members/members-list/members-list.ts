@@ -27,7 +27,7 @@ export class MembersList implements OnInit{
   authorizedMemb:any;
   logoutMember? : MembersInterface={
     memberId:0, nom:'', prenoms:'', userName:'',
-    password:'', role:'', accessLevel:'Membre', location:'', phone:0,
+    password:'', role:'', statut:'', location:'', phone:0,
     email:'', memberPhotoUrl:'', dateJoined:new Date(), isActive:true,
   }
 

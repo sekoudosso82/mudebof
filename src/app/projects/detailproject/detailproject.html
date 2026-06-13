@@ -7,7 +7,7 @@
         <p>Date: {{project()?.projectDate| date:'yyyy-MM-dd'}}</p>
         <p>Status: {{project()?.projectStatus}}</p>
 
-        @if(loggedMember()?.accessLevel==='Admin'){
+        @if(loggedMember()?.role==='Admin'){
             <button id="updateButon" [routerLink]="['/updateproject', project()?.projectId]">Update</button>
             <button id="deleteButon" [routerLink]="['/deleteproject', project()?.projectId]">Supprimer</button>
         }
