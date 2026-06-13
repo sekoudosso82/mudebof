@@ -1,0 +1,4 @@
+- name: Migrate
+run: |
+dotnet tool install --global dotnet-ef
+dotnet ef database update --connection "<"Server=LAPTOP-Q18VFCDI\\SQLEXPRESS;Database=MudeboDb;Trusted_Connection=True;Encrypt=False;">"
